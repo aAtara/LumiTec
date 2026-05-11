@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generar QR - LumiTec</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f2f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .container {
+      background: white;
+      border-radius: 16px;
+      padding: 40px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    h1 { color: #003087; margin-bottom: 8px; font-size: 1.5rem; }
+    p { color: #666; margin-bottom: 24px; font-size: 0.9rem; }
+    label { display: block; text-align: left; font-weight: 600; color: #333; margin-bottom: 8px; }
+    input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      margin-bottom: 16px;
+      outline: none;
+    }
+    input:focus { border-color: #003087; }
+    button {
+      background: #003087;
+      color: white;
+      border: none;
+      padding: 12px 32px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      margin-bottom: 24px;
+    }
+    button:hover { background: #002060; }
+    #qrResult { margin-top: 16px; }
+    #qrResult img {
+      border: 3px solid #003087;
+      border-radius: 12px;
+      padding: 12px;
+      background: white;
+    }
+    .download-btn {
+      display: inline-block;
+      margin-top: 16px;
+      background: #FFB81C;
+      color: #003087;
+      padding: 10px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .instrucciones {
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 2px solid #eee;
+      text-align: left;
+    }
+    .instrucciones h2 { color: #003087; font-size: 1.1rem; margin-bottom: 12px; }
+    .instrucciones ol { padding-left: 20px; color: #444; line-height: 2; font-size: 0.85rem; }
+    .instrucciones code {
+      background: #f0f2f5;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Generador de QR - LumiTec</h1>
+    <p>Ingresa la URL donde subiste LumiTec para generar el código QR.</p>
+
+    <label for="urlInput">URL de LumiTec:</label>
+    <input type="url" id="urlInput" placeholder="https://tu-usuario.github.io/lumitec/" value="">
+
+    <button onclick="generarQR()">Generar Código QR</button>
+
+    <div id="qrResult"></div>
+
+    <div class="instrucciones">
+      <h2>¿Cómo obtener la URL?</h2>
+      <ol>
+        <li>Sube la carpeta <code>LumiTec</code> a GitHub</li>
+        <li>En tu repositorio, ve a <strong>Settings > Pages</strong></li>
+        <li>En "Source", selecciona <strong>main</strong> y guarda</li>
+        <li>GitHub te dará una URL como: <code>https://tu-usuario.github.io/lumitec/</code></li>
+        <li>Pega esa URL arriba y genera el QR</li>
+      </ol>
+    </div>
+  </div>
+
+  <script>
+    function generarQR() {
+      const url = document.getElementById('urlInput').value.trim();
+      const resultado = document.getElementById('qrResult');
+
+      if (!url) {
+        alert('Por favor ingresa una URL válida');
+        return;
+      }
+
+      // Usamos la API gratuita de goqr.me para generar el QR
+      const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(url)}&color=003087&bgcolor=ffffff&margin=10`;
+
+      resultado.innerHTML = `
+        <img src="${qrUrl}" alt="Código QR de LumiTec" width="300" height="300">
+        <br>
+        <a class="download-btn" href="${qrUrl}" download="LumiTec-QR.png">
+          Descargar QR
+        </a>
+        <p style="margin-top:12px; color:#666; font-size:0.8rem;">
+          Haz clic derecho en la imagen > "Guardar imagen como..." para descargar
+        </p>
+      `;
+    }
+  </script>
+</body>
+</html>
