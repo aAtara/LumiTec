@@ -1,9 +1,9 @@
 /* ============================================
    Base de conocimiento de LumiTec
-   Preguntas y respuestas del TecNM Campus Delicias
+   TecNM Campus Delicias
    --- INFORMACIÓN VERIFICADA ---
-   Fuentes: delicias.tecnm.mx, universidadesmex.com,
-   sic.cultura.gob.mx, datamexico, escuelasmex.com
+   Extraída directamente de delicias.tecnm.mx
+   Última actualización: Mayo 2026
    ============================================ */
 
 const KNOWLEDGE_BASE = {
@@ -11,333 +11,413 @@ const KNOWLEDGE_BASE = {
   // --- SALUDOS Y DESPEDIDAS ---
   saludos: {
     keywords: ['hola', 'buenos días', 'buenas tardes', 'buenas noches', 'hey', 'qué onda', 'que onda', 'saludos', 'hi', 'hello'],
-    response: '¡Hola! Soy LumiTec, tu asistente virtual del TecNM Campus Delicias. ¿En qué puedo ayudarte? Puedo orientarte sobre ubicaciones del campus, trámites, horarios y más.',
+    response: '¡Hola! Soy LumiTec, tu asistente virtual del TecNM Campus Delicias. ¿En qué puedo ayudarte? Puedo orientarte sobre carreras, trámites, horarios, ubicaciones y más.',
     category: 'general'
   },
 
   despedidas: {
     keywords: ['adiós', 'adios', 'bye', 'hasta luego', 'nos vemos', 'gracias', 'muchas gracias', 'chao', 'ok gracias'],
-    response: '¡Gracias por usar LumiTec! Si necesitas algo más, aquí estaré. ¡Éxito en tus estudios!',
+    response: '¡Gracias por usar LumiTec! Si necesitas algo más, aquí estaré. ¡Éxito en tus estudios! "Sembrar valores para cosechar líderes".',
     category: 'general'
   },
 
   queEres: {
     keywords: ['quién eres', 'quien eres', 'qué eres', 'que eres', 'cómo te llamas', 'como te llamas', 'lumitec'],
-    response: 'Soy LumiTec, un asistente virtual creado para ayudar a estudiantes del Tecnológico de Delicias. Mi nombre viene de "Lumi" (luz) y "Tec" (tecnológico). Puedo ayudarte con ubicaciones, trámites y horarios del campus.',
+    response: 'Soy LumiTec, un asistente virtual del Tecnológico de Delicias. Mi nombre viene de "Lumi" (luz) y "Tec" (tecnológico). Puedo ayudarte con carreras, trámites, admisión, ubicaciones y horarios del campus.',
     category: 'general'
+  },
+
+  // --- INFORMACIÓN INSTITUCIONAL ---
+  carreras: {
+    keywords: ['carreras', 'qué carreras', 'que carreras', 'ingenierías', 'ingenierias', 'oferta académica', 'oferta educativa', 'qué puedo estudiar', 'que puedo estudiar', 'licenciatura', 'programas'],
+    response: 'El TecNM Delicias ofrece 6 ingenierías y 1 maestría: • Ing. Industrial • Ing. en Gestión Empresarial • Ing. Electromecánica • Ing. en Sistemas Computacionales • Ing. en Energías Renovables • Ing. Civil • Maestría en Ingeniería Administrativa. Hay modalidades escolarizada, mixta y virtual. Más info: delicias.tecnm.mx/ofertacademica',
+    category: 'info'
+  },
+
+  modalidades: {
+    keywords: ['modalidad', 'modalidades', 'escolarizada', 'mixta', 'virtual', 'en línea', 'en linea', 'semipresencial', 'a distancia'],
+    response: 'El Tec ofrece 3 modalidades: ESCOLARIZADA (6 carreras): Gestión Empresarial, Electromecánica, Industrial, Sistemas, Energías Renovables y Civil. MIXTA: Gestión Empresarial, Industrial y Sistemas. VIRTUAL: Ing. en Sistemas Computacionales. No todas las carreras se ofrecen en todos los periodos, consulta en delicias.tecnm.mx/ofertacademica',
+    category: 'info'
+  },
+
+  ingenieriaIndustrial: {
+    keywords: ['ingeniería industrial', 'ingenieria industrial', 'industrial'],
+    response: 'Ingeniería Industrial es la carrera con mayor matrícula del campus (~700 estudiantes). Se enfoca en optimización de procesos, manufactura, calidad y logística. Disponible en modalidad escolarizada y mixta. Cuenta con laboratorio especializado.',
+    category: 'info'
+  },
+
+  ingenieriaGestion: {
+    keywords: ['gestión empresarial', 'gestion empresarial', 'ige', 'negocios'],
+    response: 'Ingeniería en Gestión Empresarial (IGE) combina ingeniería con administración y negocios. Es la segunda carrera más popular (~370 alumnos). Disponible en modalidad escolarizada y mixta.',
+    category: 'info'
+  },
+
+  ingenieriaElectromecanica: {
+    keywords: ['electromecánica', 'electromecanica', 'eléctrica', 'electrica', 'mecánica', 'mecanica'],
+    response: 'Ingeniería Electromecánica combina electricidad, electrónica y mecánica (~345 alumnos). Cuenta con laboratorios de electrónica y talleres especializados. Disponible en modalidad escolarizada.',
+    category: 'info'
+  },
+
+  ingenieriaSistemas: {
+    keywords: ['sistemas computacionales', 'isc', 'programación', 'programacion', 'software', 'computación', 'computacion'],
+    response: 'Ingeniería en Sistemas Computacionales (ISC) se enfoca en desarrollo de software, redes y tecnologías de la información. Disponible en modalidad escolarizada, mixta y VIRTUAL. El departamento académico es el DAIS. El campus tiene más de 500 equipos de cómputo.',
+    category: 'info'
+  },
+
+  ingenieriaCivil: {
+    keywords: ['ingeniería civil', 'ingenieria civil', 'civil', 'construcción', 'construccion'],
+    response: 'Ingeniería Civil forma profesionistas en diseño, construcción y supervisión de obras de infraestructura. Disponible en modalidad escolarizada. Costo de inscripción: $3,150.00. Retícula versión OCT-2025, con 260 créditos totales.',
+    category: 'info'
+  },
+
+  ingenieriaEnergias: {
+    keywords: ['energías renovables', 'energias renovables', 'energía', 'energia', 'solar', 'renovable', 'sustentable'],
+    response: 'Ingeniería en Energías Renovables se enfoca en fuentes de energía limpia como solar, eólica y biomasa. Disponible en modalidad escolarizada.',
+    category: 'info'
+  },
+
+  maestria: {
+    keywords: ['maestría', 'maestria', 'posgrado', 'postgrado', 'ingeniería administrativa', 'ingenieria administrativa'],
+    response: 'El Tec ofrece la Maestría en Ingeniería Administrativa en modalidad escolarizada. Para más información sobre el proceso de admisión al posgrado, consulta delicias.tecnm.mx/admision o comunícate al 639 168 13 21 (Desarrollo Académico).',
+    category: 'info'
+  },
+
+  // --- ADMISIÓN ---
+  nuevoIngreso: {
+    keywords: ['nuevo ingreso', 'primer semestre', 'recién entro', 'recien entro', 'soy nuevo', 'voy a entrar', 'admisión', 'admision', 'ficha', 'examen de admisión', 'quiero entrar', 'inscribirme por primera vez'],
+    response: 'Proceso de admisión: 1) Regístrate en delicias.tecnm.mx/admision. 2) Paga tu ficha ($750). 3) Genera tu NIP y llena la encuesta socioeconómica. 4) Presenta el test de colocación en línea. Debes estar en tu último semestre de bachillerato o haberlo terminado. Consulta fechas en la página.',
+    category: 'tramite'
+  },
+
+  costoInscripcion: {
+    keywords: ['costo inscripción', 'costo inscripcion', 'cuánto cuesta inscribirse', 'cuanto cuesta inscribirse', 'precio ficha', 'costo ficha', 'cuánto cuesta la ficha'],
+    response: 'Costos de admisión: Ficha: $750.00 | Inscripción escolarizada: $2,900.00 | Inscripción Ing. Civil escolarizada: $3,150.00 | Inscripción mixta: $3,650.00. Pago en BBVA cuenta 0113571645, CLABE 012150001135716452, o en Caja del Edificio Principal del Tec (efectivo, débito o crédito).',
+    category: 'tramite'
+  },
+
+  examenAdmision: {
+    keywords: ['examen admisión', 'examen admision', 'test colocación', 'test colocacion', 'examen de ingreso', 'guía de estudio', 'guia de estudio'],
+    response: 'El examen de admisión es un "test de colocación" en línea. La guía de estudio está disponible para descarga en delicias.tecnm.mx/admision. Consulta las fechas exactas en la página y redes sociales del Tec.',
+    category: 'tramite'
+  },
+
+  // --- TRÁMITES ---
+  reinscripcion: {
+    keywords: ['reinscripción', 'reinscripcion', 'reinscribirme', 'cómo me reinscribo', 'como me reinscribo', 'inscripción semestre', 'nuevo semestre'],
+    response: 'Para reinscribirte: 1) Ingresa al SII en línea. 2) Selecciona tus materias. 3) Genera tu ficha de pago. 4) Paga en banco BBVA o en Caja del Tec. 5) Entrega comprobante en Servicios Escolares. Fechas en delicias.tecnm.mx y redes sociales.',
+    category: 'tramite'
+  },
+
+  bajaTemporal: {
+    keywords: ['baja temporal', 'baja', 'darme de baja', 'suspender estudios', 'dejar la escuela temporalmente'],
+    response: 'Para solicitar baja temporal: 1) Acude a Servicios Escolares antes de que termine el periodo. 2) Llena el formato de solicitud. 3) Obtén firma del jefe de carrera. 4) Entrega en ventanilla. Puedes reincorporarte el siguiente semestre.',
+    category: 'tramite'
+  },
+
+  constancia: {
+    keywords: ['constancia', 'constancia de estudios', 'carta de estudios', 'comprobante de estudios'],
+    response: 'Para obtener una constancia de estudios: 1) Solicítala en Servicios Escolares. 2) Presenta tu credencial vigente. 3) Paga la cuota en caja. 4) Se entrega en 2-3 días hábiles. Horario: L-V 9:00-15:00 hrs.',
+    category: 'tramite'
+  },
+
+  kardex: {
+    keywords: ['kardex', 'kárdex', 'historial académico', 'historial academico', 'calificaciones', 'boleta'],
+    response: 'Consulta tu kárdex en el SII en línea con tu número de control y contraseña. Para kárdex oficial impreso, solicítalo en Servicios Escolares con tu credencial.',
+    category: 'tramite'
+  },
+
+  titulacion: {
+    keywords: ['titulación', 'titulacion', 'título', 'titulo', 'titularme', 'cómo me titulo', 'como me titulo', 'requisitos titulación', 'tesis'],
+    response: 'Para titularte necesitas: 1) Todas las materias aprobadas. 2) Servicio social liberado. 3) Residencias profesionales liberadas. 4) Acta de nacimiento y CURP. 5) Fotos tamaño título. 6) Elegir modalidad (tesis, memoria, CENEVAL, etc.). Acude a la División de Estudios Profesionales.',
+    category: 'tramite'
+  },
+
+  servicioSocial: {
+    keywords: ['servicio social', 'ss', 'donde hago servicio social', 'requisitos servicio social', 'horas servicio social'],
+    response: 'El servicio social requiere: 1) Mínimo 70% de créditos aprobados. 2) Acudir a Gestión Tecnológica y Vinculación. 3) Elegir programa o dependencia. 4) Cumplir 480 horas (6 meses). 5) Entregar reportes bimestrales. 6) Solicitar carta de liberación al terminar.',
+    category: 'tramite'
+  },
+
+  residencias: {
+    keywords: ['residencias', 'residencias profesionales', 'residencia profesional', 'donde hago residencias', 'requisitos residencias', 'prácticas profesionales', 'practicas profesionales'],
+    response: 'Las residencias requieren: 1) Mínimo 80% de créditos. 2) Servicio social liberado o en proceso. 3) Buscar empresa o institución. 4) Presentar anteproyecto al jefe de carrera. 5) Mínimo 4 meses (640 hrs). 6) Entregar reporte final y memoria.',
+    category: 'tramite'
+  },
+
+  credencial: {
+    keywords: ['credencial', 'credencial de estudiante', 'identificación', 'identificacion', 'id estudiantil', 'perdí mi credencial'],
+    response: 'Para tramitar o reponer tu credencial acude a Servicios Escolares con identificación oficial y 2 fotos tamaño infantil. Paga la cuota en caja. Si la perdiste, la reposición tiene costo adicional.',
+    category: 'tramite'
+  },
+
+  pago: {
+    keywords: ['pago', 'ficha de pago', 'donde pago', 'forma de pago', 'banco', 'cuenta bancaria', 'caja'],
+    response: 'Opciones de pago: 1) CAJA del Edificio Principal del Tec (efectivo, débito o crédito). 2) Transferencia BBVA: Cuenta 0113571645, CLABE 012150001135716452, a nombre de "TecNM Instituto Tecnológico de Delicias". Pon tu número de solicitud como concepto.',
+    category: 'tramite'
+  },
+
+  tramites: {
+    keywords: ['trámites', 'tramites', 'qué trámites', 'que tramites', 'trámite', 'tramite'],
+    response: 'Trámites principales en Servicios Escolares: inscripción, reinscripción, constancias, credencial, kárdex, baja temporal, titulación. También: servicio social y residencias profesionales en tu jefatura de carrera. Para trámites de gobierno, hay un enlace en la página del Tec.',
+    category: 'tramite'
   },
 
   // --- UBICACIONES ---
   biblioteca: {
     keywords: ['biblioteca', 'libros', 'centro de información', 'estudiar', 'sala de estudio'],
-    response: 'La Biblioteca (Centro de Información) se encuentra dentro del campus. Cuenta con sala de lectura, área de cómputo y servicio de préstamo de libros. Horario aproximado: Lunes a Viernes de 8:00 a 20:00 hrs.',
+    response: 'La Biblioteca (Centro de Información) se encuentra dentro del campus. Cuenta con sala de lectura, área de cómputo y préstamo de libros. Horario aproximado: L-V 8:00-20:00 hrs.',
     category: 'ubicacion',
     building: 'biblioteca'
   },
 
   cafeteria: {
     keywords: ['cafetería', 'cafeteria', 'comer', 'comida', 'alimentos', 'tienda', 'lonche'],
-    response: 'La Cafetería se encuentra dentro del campus, cerca de la biblioteca. Aquí puedes comprar alimentos, bebidas y snacks durante el horario escolar.',
+    response: 'La Cafetería se encuentra dentro del campus. Aquí puedes comprar alimentos, bebidas y snacks durante el horario escolar.',
     category: 'ubicacion',
     building: 'cafeteria'
   },
 
   direccion: {
-    keywords: ['dirección', 'direccion', 'directora', 'director', 'edificio a', 'administración', 'administracion', 'oficina del director', 'oficina de la directora'],
-    response: 'La Dirección y oficinas administrativas se encuentran en el Edificio A. La directora actual es la Mtra. Lilian Karina Santiesteban Torres. Aquí están las subdirecciones y áreas administrativas. Horario: Lunes a Viernes de 8:00 a 15:00 hrs. Correo: dir_delicias@tecnm.mx',
+    keywords: ['dirección', 'direccion', 'edificio a', 'administración', 'administracion', 'oficina de la directora', 'edificio principal'],
+    response: 'La Dirección está en el Edificio Principal. La directora es la Mtra. Lilian Karina Santiesteban Torres. Aquí están las subdirecciones, administración y Caja para pagos. Horario: L-V 8:00-15:00 hrs. Correo: dir_delicias@tecnm.mx',
     category: 'ubicacion',
     building: 'direccion'
   },
 
   serviciosEscolares: {
-    keywords: ['servicios escolares', 'inscripción', 'inscripcion', 'credencial', 'constancia', 'control escolar', 'ventanilla'],
-    response: 'Servicios Escolares se ubica junto al Edificio A. Aquí realizas trámites de inscripción, constancias, credencial, kárdex y más. Horario: Lunes a Viernes de 9:00 a 15:00 hrs.',
+    keywords: ['servicios escolares', 'control escolar', 'ventanilla'],
+    response: 'Servicios Escolares se ubica junto al Edificio Principal. Trámites: inscripción, constancias, credencial, kárdex y más. Horario: L-V 9:00-15:00 hrs.',
     category: 'ubicacion',
     building: 'servicios-escolares'
   },
 
   dais: {
-    keywords: ['dais', 'departamento de sistemas', 'sistemas computacionales', 'jefe de carrera sistemas', 'jefe de sistemas'],
-    response: 'El DAIS (Departamento de Ingeniería en Sistemas Computacionales) está ubicado en la zona norte-central del campus. Aquí encuentras al jefe de carrera y asesores académicos de ISC. Horario: Lunes a Viernes de 9:00 a 15:00 hrs.',
+    keywords: ['dais', 'departamento de sistemas', 'jefe de carrera sistemas', 'jefe de sistemas'],
+    response: 'El DAIS (Departamento de Ingeniería en Sistemas Computacionales) está en la zona norte-central del campus. Jefatura de carrera y asesoría académica de ISC. Horario: L-V 9:00-15:00 hrs.',
     category: 'ubicacion',
     building: 'dais'
   },
 
   labComputo: {
     keywords: ['laboratorio de cómputo', 'laboratorio de computo', 'lab cómputo', 'lab computo', 'centro de cómputo', 'centro de computo', 'computadoras', 'sala de computo'],
-    response: 'El Centro de Cómputo cuenta con más de 500 equipos con software especializado para prácticas. Necesitas tu credencial vigente para acceder. Horario: Lunes a Viernes de 8:00 a 19:00 hrs.',
+    response: 'El Centro de Cómputo cuenta con más de 500 equipos con software especializado. Requiere credencial vigente. Horario: L-V 8:00-19:00 hrs.',
     category: 'ubicacion',
     building: 'lab-computo'
   },
 
   labElectronica: {
     keywords: ['laboratorio de electrónica', 'laboratorio de electronica', 'lab electrónica', 'lab electronica', 'electromecánica', 'electromecanica', 'lab electromecánica'],
-    response: 'El Laboratorio de Electrónica y Electromecánica está en la zona noreste del campus. Aquí se realizan prácticas de circuitos, electrónica, sistemas eléctricos y mecánicos. Solicita acceso con tu docente.',
+    response: 'El Laboratorio de Electrónica y Electromecánica está en la zona noreste del campus. Prácticas de circuitos, electrónica, sistemas eléctricos y mecánicos. Acceso con docente.',
     category: 'ubicacion',
     building: 'lab-electronica'
   },
 
   labIndustrial: {
-    keywords: ['laboratorio industrial', 'lab industrial', 'ingeniería industrial', 'ingenieria industrial', 'taller industrial'],
-    response: 'El Laboratorio de Ingeniería Industrial se encuentra en el extremo este del campus. Aquí se realizan prácticas de procesos de manufactura, métodos y tiempos, y control de calidad.',
+    keywords: ['laboratorio industrial', 'lab industrial', 'taller industrial'],
+    response: 'El Laboratorio de Ingeniería Industrial se encuentra en el extremo este del campus. Prácticas de manufactura, métodos y tiempos, y control de calidad.',
     category: 'ubicacion',
     building: 'lab-industrial'
   },
 
   edificioB: {
     keywords: ['edificio b', 'aulas edificio b', 'salones edificio b'],
-    response: 'El Edificio B de aulas está en la zona norte-central del campus. Cuenta con múltiples salones de clase equipados con proyector. Consulta tu horario en el SII para saber tu aula específica.',
+    response: 'El Edificio B tiene múltiples salones con proyector. Consulta tu aula en el SII.',
     category: 'ubicacion',
     building: 'edificio-b'
   },
 
   edificioC: {
     keywords: ['edificio c', 'aulas edificio c', 'salones edificio c'],
-    response: 'El Edificio C de aulas está en la zona noreste del campus, junto al centro de cómputo. Tiene salones con proyector y equipo multimedia.',
+    response: 'El Edificio C tiene salones con proyector y equipo multimedia, junto al centro de cómputo.',
     category: 'ubicacion',
     building: 'edificio-c'
   },
 
   edificioD: {
-    keywords: ['edificio d', 'posgrado', 'aulas edificio d', 'maestría', 'maestria'],
-    response: 'El Edificio D se ubica en la zona sur-central del campus. Alberga aulas adicionales y espacios para posgrado. El Tec está abriendo nuevos programas de maestría.',
+    keywords: ['edificio d', 'aulas edificio d'],
+    response: 'El Edificio D alberga aulas adicionales y espacios para la Maestría en Ingeniería Administrativa.',
     category: 'ubicacion',
     building: 'edificio-d'
   },
 
   banos: {
     keywords: ['baños', 'banos', 'baño', 'bano', 'sanitarios', 'restroom', 'wc'],
-    response: 'Hay módulos de baños en varias ubicaciones del campus. Los principales se encuentran cerca de los edificios de aulas y junto a los laboratorios. Todos están señalizados.',
+    response: 'Hay módulos de baños en varias ubicaciones del campus, cerca de los edificios de aulas y laboratorios. Todos están señalizados.',
     category: 'ubicacion',
     building: 'banos'
   },
 
   canchas: {
     keywords: ['canchas', 'deportes', 'cancha', 'futbol', 'fútbol', 'basquetbol', 'básquetbol', 'deporte', 'actividades deportivas', 'gimnasio', 'pesas', 'campo'],
-    response: 'El campus cuenta con instalaciones deportivas que incluyen canchas, un gimnasio-auditorio (construido en 2022), un campo de pasto sintético y una sala de pesas equipada. Se usan para clases de educación física, actividades extracurriculares y torneos del TecNM.',
+    response: 'El campus tiene canchas, gimnasio-auditorio (construido 2022), campo de pasto sintético y sala de pesas equipada. Ha sido sede de pre-nacionales deportivos del TecNM.',
     category: 'ubicacion',
     building: 'canchas'
   },
 
   estacionamiento: {
-    keywords: ['estacionamiento', 'parking', 'estacionar', 'carro', 'coche', 'auto', 'vehículo', 'vehiculo', 'donde dejo mi carro'],
-    response: 'El estacionamiento para estudiantes está en la zona sureste del campus. Respeta los cajones señalizados y las áreas reservadas para personal docente y personas con discapacidad.',
+    keywords: ['estacionamiento', 'parking', 'estacionar', 'carro', 'coche', 'auto', 'vehículo', 'vehiculo'],
+    response: 'El estacionamiento está en la zona sureste del campus. Respeta cajones señalizados y áreas reservadas para docentes y personas con discapacidad.',
     category: 'ubicacion',
     building: 'estacionamiento'
   },
 
   entrada: {
     keywords: ['entrada', 'puerta principal', 'acceso', 'cómo llego', 'como llego', 'entrada principal'],
-    response: 'La entrada principal del campus se encuentra sobre el Paseo Tecnológico Km 3.5. Cuenta con caseta de vigilancia con personal de seguridad. Presenta tu credencial al entrar.',
+    response: 'La entrada principal está sobre el Paseo Tecnológico Km 3.5 (carretera Delicias-Rosalilla). Cuenta con caseta de vigilancia. Presenta tu credencial al entrar.',
     category: 'ubicacion',
     building: 'entrada'
   },
 
   aulas: {
     keywords: ['aulas', 'salones', 'salon', 'salón', 'donde tengo clase', 'mi salon'],
-    response: 'Las aulas se distribuyen en los Edificios B, C y D. Consulta tu horario en el SII (Sistema Integral de Información) para conocer tu aula y edificio exacto. Si no encuentras tu salón, pregunta en Servicios Escolares.',
+    response: 'Las aulas están en los Edificios B, C y D. Consulta tu horario en el SII con tu número de control para saber tu aula exacta.',
     category: 'ubicacion'
   },
 
-  // --- TRÁMITES ---
-  reinscripcion: {
-    keywords: ['reinscripción', 'reinscripcion', 'reinscribirme', 'cómo me reinscribo', 'como me reinscribo', 'inscripción semestre', 'nuevo semestre'],
-    response: 'Para reinscribirte: 1) Ingresa al SII (Sistema Integral de Información) en línea. 2) Selecciona tus materias en el periodo establecido. 3) Genera tu ficha de pago. 4) Realiza el pago en banco. 5) Entrega comprobante en Servicios Escolares. Las fechas se publican en delicias.tecnm.mx y en redes sociales del Tec.',
-    category: 'tramite'
+  // --- PLATAFORMAS Y SISTEMAS ---
+  sii: {
+    keywords: ['sii', 'sistema integral', 'plataforma', 'portal estudiante', 'número de control', 'numero de control', 'contraseña sii'],
+    response: 'El SII (Sistema Integral de Información) es donde consultas calificaciones, horarios, seleccionas materias y generas fichas de pago. Accede con tu número de control y contraseña. Si olvidaste tu contraseña, acude a Servicios Escolares con tu credencial.',
+    category: 'info'
   },
 
-  bajaTemporal: {
-    keywords: ['baja temporal', 'baja', 'darme de baja', 'suspender estudios', 'dejar la escuela temporalmente'],
-    response: 'Para solicitar baja temporal: 1) Acude a Servicios Escolares antes de que termine el periodo ordinario. 2) Llena el formato de solicitud de baja. 3) Obtén firma del jefe de carrera. 4) Entrega en ventanilla. Puedes reincorporarte el siguiente semestre.',
-    category: 'tramite'
+  moodle: {
+    keywords: ['moodle', 'plataforma virtual', 'clases virtuales', 'plataforma de cursos'],
+    response: 'MOODLE es la plataforma de aprendizaje en línea del Tec. Ahí los docentes suben material, tareas y actividades. Accede con tus credenciales institucionales. Si tienes problemas, contacta a tu docente o al DAIS.',
+    category: 'info'
   },
 
-  constancia: {
-    keywords: ['constancia', 'constancia de estudios', 'carta de estudios', 'comprobante de estudios'],
-    response: 'Para obtener una constancia de estudios: 1) Solicítala en Servicios Escolares. 2) Presenta tu credencial vigente. 3) Paga la cuota correspondiente en caja. 4) La constancia se entrega en 2-3 días hábiles. Horario: L-V 9:00-15:00 hrs.',
-    category: 'tramite'
+  sig: {
+    keywords: ['sig', 'sistema integrado de gestión', 'iso', 'certificación', 'certificacion', 'calidad'],
+    response: 'El Tec cuenta con un Sistema Integrado de Gestión certificado bajo las normas: ISO 9001:2015 (Calidad), ISO 14001:2015 (Medio Ambiente), ISO 45001:2018 (Seguridad y Salud) e ISO 50001:2018 (Energía). Esto garantiza estándares internacionales en educación.',
+    category: 'info'
   },
 
-  kardex: {
-    keywords: ['kardex', 'kárdex', 'historial académico', 'historial academico', 'calificaciones', 'boleta'],
-    response: 'Puedes consultar tu kárdex (historial de calificaciones) en el SII en línea con tu número de control y contraseña. Para un kárdex oficial impreso, solicítalo en Servicios Escolares con tu credencial. Tiene un costo y tarda 2-3 días hábiles.',
-    category: 'tramite'
-  },
-
-  titulacion: {
-    keywords: ['titulación', 'titulacion', 'título', 'titulo', 'titularme', 'cómo me titulo', 'como me titulo', 'requisitos titulación', 'tesis'],
-    response: 'Para titularte necesitas: 1) Haber aprobado todas las materias. 2) Servicio social liberado. 3) Residencias profesionales liberadas. 4) Acta de nacimiento y CURP. 5) Fotos tamaño título. 6) Elegir modalidad de titulación (tesis, memoria, CENEVAL, etc.). Acude a la División de Estudios Profesionales para iniciar el trámite.',
-    category: 'tramite'
-  },
-
-  servicioSocial: {
-    keywords: ['servicio social', 'ss', 'donde hago servicio social', 'requisitos servicio social', 'horas servicio social'],
-    response: 'El servicio social requiere: 1) Tener al menos el 70% de créditos aprobados. 2) Acudir al departamento de Gestión Tecnológica y Vinculación. 3) Elegir un programa o dependencia. 4) Cumplir 480 horas mínimo (6 meses). 5) Entregar reportes bimestrales. 6) Al terminar, solicita tu carta de liberación.',
-    category: 'tramite'
-  },
-
-  residencias: {
-    keywords: ['residencias', 'residencias profesionales', 'residencia profesional', 'donde hago residencias', 'requisitos residencias', 'prácticas profesionales', 'practicas profesionales'],
-    response: 'Las residencias profesionales requieren: 1) Tener al menos el 80% de créditos. 2) Servicio social liberado (o en proceso). 3) Buscar empresa o institución. 4) Presentar anteproyecto al jefe de carrera. 5) Duración mínima de 4 meses (640 hrs). 6) Entregar reporte final y memoria. Acude a tu jefatura de carrera.',
-    category: 'tramite'
-  },
-
-  credencial: {
-    keywords: ['credencial', 'credencial de estudiante', 'identificación', 'identificacion', 'id estudiantil', 'perdí mi credencial'],
-    response: 'Para tramitar o reponer tu credencial: 1) Acude a Servicios Escolares con una identificación oficial. 2) Lleva 2 fotos tamaño infantil. 3) Paga la cuota en caja. Si la perdiste, el trámite de reposición tiene un costo adicional. Horario: L-V 9:00-15:00 hrs.',
-    category: 'tramite'
-  },
-
-  pago: {
-    keywords: ['pago', 'cuánto cuesta', 'cuanto cuesta', 'colegiatura', 'ficha de pago', 'donde pago', 'costo inscripción', 'costo inscripcion'],
-    response: 'Las fichas de pago se generan desde el SII (Sistema Integral de Información) en línea. El pago se realiza en banco o en la caja del Tec. El monto varía según el trámite. Conserva siempre tu comprobante de pago.',
-    category: 'tramite'
-  },
-
-  // --- HORARIOS ---
-  horarioServiciosEscolares: {
-    keywords: ['horario servicios escolares', 'a qué hora abren servicios escolares', 'horario de atención servicios'],
-    response: 'Servicios Escolares atiende de Lunes a Viernes de 9:00 a 15:00 hrs. Se recomienda llegar temprano, especialmente en periodo de inscripciones.',
-    category: 'horario'
-  },
-
-  horarioBiblioteca: {
-    keywords: ['horario biblioteca', 'a qué hora abre la biblioteca', 'horario de la biblioteca'],
-    response: 'La Biblioteca abre de Lunes a Viernes de 8:00 a 20:00 hrs. Durante periodos de exámenes puede extender su horario.',
-    category: 'horario'
-  },
-
-  horarioTec: {
-    keywords: ['horario del tec', 'a qué hora abre el tec', 'horario de clases', 'horario general', 'a qué hora abren', 'turno'],
-    response: 'El campus opera en turno discontinuo (matutino y vespertino). Las clases se imparten de Lunes a Viernes. Para conocer tu horario específico, consulta el SII con tu número de control.',
-    category: 'horario'
+  calendario: {
+    keywords: ['calendario', 'calendario académico', 'calendario academico', 'periodo', 'semestre', 'cuando inician clases', 'inicio de clases'],
+    response: 'El calendario académico vigente es ENE-JUN 2026. El próximo periodo es AGO-DIC 2026 con inicio de clases el 17 de agosto. Consulta el calendario completo en delicias.tecnm.mx',
+    category: 'info'
   },
 
   // --- INFORMACIÓN GENERAL ---
-  carreras: {
-    keywords: ['carreras', 'qué carreras', 'que carreras', 'ingenierías', 'ingenierias', 'oferta académica', 'oferta educativa', 'qué puedo estudiar', 'que puedo estudiar', 'licenciatura'],
-    response: 'El TecNM Campus Delicias ofrece 6 carreras: • Ingeniería Industrial • Ingeniería en Gestión Empresarial • Ingeniería Electromecánica • Ingeniería en Sistemas Computacionales • Ingeniería Civil • Ingeniería en Energías Renovables. Todas con validez oficial del TecNM. Más info en delicias.tecnm.mx/admision',
-    category: 'info'
-  },
-
-  ingenieriaIndustrial: {
-    keywords: ['ingeniería industrial', 'ingenieria industrial', 'industrial'],
-    response: 'Ingeniería Industrial es la carrera con mayor matrícula del campus, con cerca de 700 estudiantes. Se enfoca en optimización de procesos, manufactura, calidad y logística. Cuenta con laboratorio especializado.',
-    category: 'info'
-  },
-
-  ingenieriaGestion: {
-    keywords: ['gestión empresarial', 'gestion empresarial', 'ige', 'administración', 'administracion', 'negocios'],
-    response: 'Ingeniería en Gestión Empresarial (IGE) es la segunda carrera con más alumnos. Combina ingeniería con administración y negocios. Es diferente a una licenciatura en administración porque tiene enfoque tecnológico e ingenieril.',
-    category: 'info'
-  },
-
-  ingenieriaElectromecanica: {
-    keywords: ['electromecánica', 'electromecanica', 'eléctrica', 'electrica', 'mecánica', 'mecanica'],
-    response: 'Ingeniería Electromecánica combina electricidad, electrónica y mecánica. Es la tercera carrera con mayor matrícula en el campus. Cuenta con laboratorios de electrónica y talleres especializados.',
-    category: 'info'
-  },
-
-  ingenieriaSistemas: {
-    keywords: ['sistemas computacionales', 'isc', 'programación', 'programacion', 'software', 'computación', 'computacion'],
-    response: 'Ingeniería en Sistemas Computacionales (ISC) se enfoca en desarrollo de software, redes, bases de datos y tecnologías de la información. El campus cuenta con un centro de cómputo con más de 500 equipos. El departamento académico es el DAIS.',
-    category: 'info'
-  },
-
-  ingenieriaCivil: {
-    keywords: ['ingeniería civil', 'ingenieria civil', 'civil', 'construcción', 'construccion'],
-    response: 'Ingeniería Civil forma profesionistas en diseño, construcción y supervisión de obras de infraestructura. Es una de las 6 carreras que ofrece el TecNM Campus Delicias.',
-    category: 'info'
-  },
-
-  ingenieriaEnergias: {
-    keywords: ['energías renovables', 'energias renovables', 'energía', 'energia', 'solar', 'renovable', 'sustentable'],
-    response: 'Ingeniería en Energías Renovables se enfoca en fuentes de energía limpia como solar, eólica y biomasa. Es una carrera con gran demanda actual y forma parte de la oferta educativa del TecNM Campus Delicias.',
-    category: 'info'
+  directora: {
+    keywords: ['directora', 'director', 'quién dirige', 'quien dirige', 'lilian', 'santiesteban'],
+    response: 'La directora del TecNM Campus Delicias es la Mtra. Lilian Karina Santiesteban Torres. Su oficina está en el Edificio Principal (Dirección). Correo: dir_delicias@tecnm.mx',
+    category: 'info',
+    building: 'direccion'
   },
 
   telefono: {
-    keywords: ['teléfono', 'telefono', 'número', 'numero', 'contacto', 'llamar', 'tel', 'correo', 'email'],
-    response: 'Teléfono del TecNM Delicias: 639 132 6500. Correos oficiales: dir_delicias@tecnm.mx (Dirección) y subadmi@delicias.tecnm.mx (Subdirección Administrativa). Sitio web: delicias.tecnm.mx',
+    keywords: ['teléfono', 'telefono', 'contacto', 'llamar', 'tel', 'correo', 'email'],
+    response: 'Contacto TecNM Delicias: Tel: 639 132 6500 | Desarrollo Académico: 639 168 13 21 | Correo: dir_delicias@tecnm.mx (Dirección), comunicacion@delicias.tecnm.mx (Comunicación). Web: delicias.tecnm.mx',
     category: 'info'
   },
 
   ubicacionTec: {
     keywords: ['dirección del tec', 'direccion del tec', 'dónde está el tec', 'donde esta el tec', 'ubicación del campus', 'ubicacion del campus', 'cómo llego al tec', 'domicilio'],
-    response: 'El Instituto Tecnológico de Delicias se ubica en Paseo Tecnológico Km 3.5, Col. Tecnológico, C.P. 33000, Delicias, Chihuahua, México (sobre la carretera Delicias-Rosalilla).',
+    response: 'El TecNM Campus Delicias está en Paseo Tecnológico Km 3.5, Col. Tecnológico, C.P. 33000, Delicias, Chihuahua, México (carretera Delicias-Rosalilla).',
     category: 'info'
   },
 
-  directora: {
-    keywords: ['directora', 'director', 'quién dirige', 'quien dirige', 'lilian', 'santiesteban'],
-    response: 'La directora actual del TecNM Campus Delicias es la Mtra. Lilian Karina Santiesteban Torres. Su oficina se encuentra en el Edificio A (Dirección). Correo: dir_delicias@tecnm.mx',
-    category: 'info',
-    building: 'direccion'
+  mision: {
+    keywords: ['misión', 'mision'],
+    response: 'Misión del TecNM Delicias: Formar profesionistas de excelencia en el ámbito de la ciencia y la tecnología, capaces de propiciar el desarrollo y transformación de su entorno, a través de programas educativos de calidad pertinentes.',
+    category: 'info'
   },
 
-  wifi: {
-    keywords: ['wifi', 'wi-fi', 'internet', 'red', 'contraseña wifi', 'cómo me conecto', 'como me conecto al wifi'],
-    response: 'Sí, hay Wi-Fi disponible en el campus. Si tienes problemas para conectarte, acude al Centro de Cómputo o al DAIS para soporte técnico.',
+  vision: {
+    keywords: ['visión', 'vision'],
+    response: 'Visión del TecNM Delicias: Ser una institución educativa que se distinga como uno de los elementos fundamentales del desarrollo sustentable, permanente y equitativo del estado.',
+    category: 'info'
+  },
+
+  valores: {
+    keywords: ['valores', 'principios', 'lema'],
+    response: 'Lema: "Sembrar valores para cosechar líderes". Valores institucionales: Honestidad, Responsabilidad, Respeto, Compromiso y Lealtad.',
+    category: 'info'
+  },
+
+  historia: {
+    keywords: ['historia', 'fundación', 'fundacion', 'cuándo se fundó', 'cuando se fundo', 'origen', 'aniversario'],
+    response: 'El Tec de Delicias fue fundado el 6 de junio de 1986 mediante convenio entre el Gobierno del Estado, el Patronato y la Federación, durante el mandato del Gobernador Lic. Saúl González Herrera. Abrió sus puertas el 22 de septiembre de 1986. Fue el cuarto Instituto Tecnológico en Chihuahua.',
     category: 'info'
   },
 
   tecNM: {
     keywords: ['tecnm', 'tecnológico nacional', 'tecnologico nacional', 'qué es el tecnm', 'que es el tecnm'],
-    response: 'El TecNM (Tecnológico Nacional de México) es el sistema de educación superior tecnológica pública más grande de México y Latinoamérica. El Campus Delicias pertenece a este sistema, lo que garantiza que los planes de estudio y títulos tienen reconocimiento oficial en todo el país.',
-    category: 'info'
-  },
-
-  mision: {
-    keywords: ['misión', 'mision', 'visión', 'vision', 'valores', 'objetivo del tec'],
-    response: 'Misión: Formar profesionistas de excelencia en el ámbito de la ciencia y la tecnología, capaces de propiciar el desarrollo y transformación de su entorno, a través de programas educativos de calidad pertinentes. Visión: Ser una institución educativa que se distinga como uno de los elementos fundamentales del desarrollo sustentable.',
+    response: 'El TecNM (Tecnológico Nacional de México) es el sistema de educación superior tecnológica pública más grande de Latinoamérica. El Campus Delicias pertenece a este sistema con reconocimiento oficial nacional.',
     category: 'info'
   },
 
   becas: {
     keywords: ['becas', 'beca', 'apoyo económico', 'apoyo economico', 'benito juárez', 'benito juarez', 'jóvenes escribiendo', 'jovenes escribiendo'],
-    response: 'El Tec de Delicias tiene acceso a becas federales: • Beca Benito Juárez • Beca Jóvenes Escribiendo el Futuro. También hay becas institucionales. Para más información, acude al Departamento de Servicios Estudiantiles o revisa las convocatorias en delicias.tecnm.mx',
-    category: 'info'
-  },
-
-  sii: {
-    keywords: ['sii', 'sistema integral', 'plataforma', 'portal estudiante', 'número de control', 'numero de control', 'contraseña sii'],
-    response: 'El SII (Sistema Integral de Información) es la plataforma en línea donde consultas calificaciones, horarios, realizas selección de materias y generas fichas de pago. Accede con tu número de control y contraseña. Si olvidaste tu contraseña, acude a Servicios Escolares con tu credencial.',
-    category: 'info'
-  },
-
-  extraescolares: {
-    keywords: ['actividades extra', 'extraescolares', 'clubes', 'talleres', 'actividades culturales', 'deporte', 'selección deportiva', 'torneos'],
-    response: 'El Tec ofrece actividades extraescolares como: deportes (futbol, basquetbol, voleibol, atletismo), talleres culturales, y programas deportivos. El campus ha sido sede de pre-nacionales deportivos del TecNM. Cuenta con gimnasio-auditorio, campo sintético y sala de pesas. Infórmate al inicio de cada semestre.',
-    category: 'info'
-  },
-
-  tutoria: {
-    keywords: ['tutoría', 'tutoria', 'tutor', 'asesoría', 'asesoria', 'asesor', 'ayuda académica'],
-    response: 'Cada alumno tiene asignado un tutor académico. Tu tutor puede ayudarte con orientación académica, problemas de desempeño y canalización a servicios de apoyo. Consulta quién es tu tutor en la jefatura de tu carrera o en el SII.',
-    category: 'info'
-  },
-
-  nuevoIngreso: {
-    keywords: ['nuevo ingreso', 'primer semestre', 'recién entro', 'recien entro', 'soy nuevo', 'voy a entrar', 'admisión', 'admision', 'ficha', 'examen de admisión'],
-    response: 'Si eres de nuevo ingreso: 1) Consulta la convocatoria en delicias.tecnm.mx/admision. 2) Realiza tu registro y obtén tu ficha. 3) Presenta el examen de admisión. 4) Si eres aceptado, realiza tu inscripción en las fechas indicadas. 5) Asiste a la semana de inducción. ¡Bienvenido al Tec de Delicias!',
+    response: 'El Tec tiene acceso a becas federales: Beca Benito Juárez y Beca Jóvenes Escribiendo el Futuro. También hay becas institucionales. Consulta convocatorias en delicias.tecnm.mx',
     category: 'info'
   },
 
   estadisticas: {
     keywords: ['cuántos alumnos', 'cuantos alumnos', 'cuántos estudiantes', 'cuantos estudiantes', 'matrícula', 'matricula', 'cuántos maestros', 'cuantos maestros', 'docentes'],
-    response: 'El TecNM Campus Delicias tiene aproximadamente 1,800 estudiantes y 92 docentes. Las carreras con mayor matrícula son: Ingeniería Industrial, Ingeniería en Gestión Empresarial e Ingeniería Electromecánica.',
+    response: 'El TecNM Delicias tiene más de 1,800 estudiantes en sus 6 carreras y maestría, atendidos por 98 docentes calificados. Las carreras con mayor matrícula son: Ing. Industrial, Ing. en Gestión Empresarial e Ing. Electromecánica.',
     category: 'info'
   },
 
   paginaWeb: {
-    keywords: ['página web', 'pagina web', 'sitio web', 'sitio oficial', 'redes sociales', 'facebook', 'página del tec', 'pagina del tec'],
-    response: 'El sitio web oficial del TecNM Campus Delicias es: delicias.tecnm.mx. Ahí encuentras convocatorias, noticias, oferta educativa y trámites. También puedes seguir las redes sociales del Tec para avisos y eventos.',
+    keywords: ['página web', 'pagina web', 'sitio web', 'sitio oficial', 'redes sociales', 'facebook', 'página del tec'],
+    response: 'Sitio web oficial: delicias.tecnm.mx. Ahí encuentras: Admisión, Oferta Educativa, Calendario Académico, SII, y más. Sigue las redes sociales del Tec para avisos y eventos.',
     category: 'info'
   },
 
-  distancia: {
-    keywords: ['educación a distancia', 'educacion a distancia', 'en línea', 'en linea', 'virtual', 'clases en línea'],
-    response: 'El TecNM Campus Delicias también ofrece programas de educación a distancia. Para más información, visita distancia.delicias.tecnm.mx o acude a la Subdirección Académica.',
+  wifi: {
+    keywords: ['wifi', 'wi-fi', 'internet', 'red', 'contraseña wifi', 'cómo me conecto'],
+    response: 'Hay Wi-Fi disponible en el campus. Si tienes problemas para conectarte, acude al Centro de Cómputo o al DAIS para soporte técnico.',
+    category: 'info'
+  },
+
+  extraescolares: {
+    keywords: ['actividades extra', 'extraescolares', 'clubes', 'talleres', 'actividades culturales', 'deporte', 'selección deportiva', 'torneos', 'actividades complementarias'],
+    response: 'El Tec ofrece actividades deportivas (futbol, basquetbol, voleibol, atletismo), talleres culturales y actividades complementarias (valen 5 créditos). Cuenta con gimnasio-auditorio, campo sintético y sala de pesas. El campus ha sido sede de pre-nacionales del TecNM.',
+    category: 'info'
+  },
+
+  tutoria: {
+    keywords: ['tutoría', 'tutoria', 'tutor', 'asesoría', 'asesoria', 'asesor', 'ayuda académica'],
+    response: 'Cada alumno tiene un tutor académico asignado. Tu tutor te orienta académicamente y te canaliza a servicios de apoyo. Consulta quién es tu tutor en la jefatura de tu carrera o en el SII.',
+    category: 'info'
+  },
+
+  vinculacion: {
+    keywords: ['vinculación', 'vinculacion', 'empresas', 'convenios', 'nodess', 'consejo de vinculación'],
+    response: 'El Tec tiene un Consejo de Vinculación con representantes del sector público, social y privado. También participa en NODESS (Nodos de Impulso a la Economía Social y Solidaria) con proyectos en Delicias, Meoqui, Rosales y Saucillo.',
+    category: 'info'
+  },
+
+  proteccionCivil: {
+    keywords: ['protección civil', 'proteccion civil', 'emergencia', 'seguridad', 'violencia de género', 'violencia de genero', 'igualdad', 'género', 'genero', 'acoso'],
+    response: 'El Tec cuenta con: Unidad de Protección Civil, Comité Contra la Violencia de Género (CVG), Sistema de Gestión de Igualdad de Género (SGIG) y Subcomité de Ética (SEPCI). Si necesitas apoyo, acude a cualquiera de estas instancias en el Edificio Principal.',
+    category: 'info'
+  },
+
+  horarioTec: {
+    keywords: ['horario del tec', 'a qué hora abre el tec', 'horario de clases', 'horario general', 'a qué hora abren', 'turno'],
+    response: 'El campus opera en turno discontinuo (matutino y vespertino). Las clases se imparten de lunes a viernes. Consulta tu horario específico en el SII con tu número de control.',
+    category: 'horario'
+  },
+
+  horarioServiciosEscolares: {
+    keywords: ['horario servicios escolares', 'a qué hora abren servicios escolares'],
+    response: 'Servicios Escolares atiende de Lunes a Viernes de 9:00 a 15:00 hrs. Llega temprano en periodo de inscripciones.',
+    category: 'horario'
+  },
+
+  horarioBiblioteca: {
+    keywords: ['horario biblioteca', 'a qué hora abre la biblioteca'],
+    response: 'La Biblioteca abre de Lunes a Viernes de 8:00 a 20:00 hrs. En exámenes puede extender horario.',
+    category: 'horario'
+  },
+
+  desarrolloAcademico: {
+    keywords: ['desarrollo académico', 'desarrollo academico'],
+    response: 'El departamento de Desarrollo Académico coordina la oferta educativa y los procesos de admisión. Teléfono: 639 168 13 21. Consulta información en delicias.tecnm.mx/ofertacademica',
     category: 'info'
   }
 };
@@ -346,77 +426,122 @@ const KNOWLEDGE_BASE = {
 const BUILDING_INFO = {
   'entrada': {
     title: 'Entrada Principal',
-    description: 'Acceso principal del campus sobre Paseo Tecnológico Km 3.5. Cuenta con caseta de vigilancia y personal de seguridad.',
+    description: 'Acceso principal sobre Paseo Tecnológico Km 3.5 (carretera Delicias-Rosalilla). Caseta de vigilancia.',
     icon: '🚪'
   },
   'direccion': {
-    title: 'Dirección / Edificio A',
-    description: 'Oficinas de la Directora Mtra. Lilian Karina Santiesteban Torres, Subdirecciones y Administración. Correo: dir_delicias@tecnm.mx. Horario: L-V 8:00-15:00 hrs.',
+    title: 'Edificio Principal / Dirección',
+    description: 'Dirección (Mtra. Lilian Karina Santiesteban Torres), Subdirecciones, Administración y Caja. Correo: dir_delicias@tecnm.mx. L-V 8:00-15:00.',
     icon: '🏛️'
   },
   'servicios-escolares': {
     title: 'Servicios Escolares',
-    description: 'Inscripciones, constancias, credenciales, kárdex y trámites escolares. Horario: L-V 9:00-15:00 hrs.',
+    description: 'Inscripciones, constancias, credenciales, kárdex y trámites escolares. L-V 9:00-15:00.',
     icon: '📋'
   },
   'dais': {
     title: 'DAIS - Depto. de Sistemas',
-    description: 'Departamento de Ingeniería en Sistemas Computacionales. Jefatura de carrera y asesoría académica. Horario: L-V 9:00-15:00 hrs.',
+    description: 'Departamento de Ing. en Sistemas Computacionales. Jefatura de carrera y asesoría académica. L-V 9:00-15:00.',
     icon: '💻'
   },
   'edificio-b': {
     title: 'Edificio B - Aulas',
-    description: 'Salones de clase con proyector y equipo multimedia. Consulta tu horario en el SII para ubicar tu aula.',
+    description: 'Salones con proyector. Consulta tu horario en el SII.',
     icon: '🏫'
   },
   'edificio-c': {
     title: 'Edificio C - Aulas',
-    description: 'Salones de clase adicionales con equipo multimedia. Ubicado en la zona noreste del campus.',
+    description: 'Salones con equipo multimedia, junto al centro de cómputo.',
     icon: '🏫'
   },
   'edificio-d': {
     title: 'Edificio D - Aulas / Posgrado',
-    description: 'Aulas para clases regulares y programas de posgrado/maestría del TecNM.',
+    description: 'Aulas y espacios para la Maestría en Ingeniería Administrativa.',
     icon: '🏫'
   },
   'lab-computo': {
     title: 'Centro de Cómputo',
-    description: 'Más de 500 equipos con software especializado. Requiere credencial vigente. Horario: L-V 8:00-19:00 hrs.',
+    description: '500+ equipos con software especializado. Credencial vigente requerida. L-V 8:00-19:00.',
     icon: '🖥️'
   },
   'lab-electronica': {
-    title: 'Lab. Electrónica y Electromecánica',
-    description: 'Prácticas de circuitos, electrónica, sistemas eléctricos y mecánicos para Ing. Electromecánica. Acceso con docente.',
+    title: 'Lab. Electromecánica',
+    description: 'Prácticas de circuitos, electrónica, sistemas eléctricos y mecánicos. Acceso con docente.',
     icon: '⚡'
   },
   'lab-industrial': {
     title: 'Laboratorio Industrial',
-    description: 'Prácticas de manufactura, métodos y tiempos, y control de calidad para Ing. Industrial.',
+    description: 'Manufactura, métodos y tiempos, control de calidad para Ing. Industrial.',
     icon: '🏭'
   },
   'biblioteca': {
     title: 'Biblioteca',
-    description: 'Centro de información con sala de lectura, área de cómputo y préstamo de libros. Horario: L-V 8:00-20:00 hrs.',
+    description: 'Centro de información: sala de lectura, cómputo y préstamo de libros. L-V 8:00-20:00.',
     icon: '📚'
   },
   'cafeteria': {
     title: 'Cafetería',
-    description: 'Venta de alimentos, bebidas y snacks durante el horario escolar.',
+    description: 'Alimentos, bebidas y snacks durante el horario escolar.',
     icon: '🍽️'
   },
   'canchas': {
     title: 'Instalaciones Deportivas',
-    description: 'Canchas deportivas, gimnasio-auditorio (2022), campo de pasto sintético y sala de pesas equipada. Sede de pre-nacionales TecNM.',
+    description: 'Canchas, gimnasio-auditorio (2022), campo sintético y sala de pesas. Sede pre-nacionales TecNM.',
     icon: '⚽'
   },
   'estacionamiento': {
     title: 'Estacionamiento',
-    description: 'Estacionamiento para estudiantes. Respeta los cajones señalizados y áreas reservadas para docentes y personas con discapacidad.',
+    description: 'Para estudiantes. Respetar cajones señalizados y áreas reservadas.',
     icon: '🅿️'
   },
   'banos': {
     title: 'Baños / Sanitarios',
-    description: 'Módulos de sanitarios señalizados en varias ubicaciones del campus.',
+    description: 'Módulos señalizados en varias ubicaciones del campus.',
     icon: '🚻'
   }
 };
+
+// Contexto institucional completo para el motor de IA
+const INSTITUTIONAL_CONTEXT = `
+Eres LumiTec, el asistente virtual del Instituto Tecnológico de Delicias (TecNM Campus Delicias), Chihuahua, México.
+
+INFORMACIÓN INSTITUCIONAL:
+- Nombre oficial: Instituto Tecnológico de Delicias, parte del Tecnológico Nacional de México (TecNM)
+- Dirección: Paseo Tecnológico Km 3.5, Col. Tecnológico, C.P. 33000, Delicias, Chihuahua, México
+- Teléfono: 639 132 6500 | Desarrollo Académico: 639 168 13 21
+- Correos: dir_delicias@tecnm.mx | comunicacion@delicias.tecnm.mx
+- Web: delicias.tecnm.mx
+- Directora: Mtra. Lilian Karina Santiesteban Torres
+- Fundado: 6 de junio de 1986, abrió puertas el 22 de septiembre de 1986
+- Lema: "Sembrar valores para cosechar líderes"
+- Valores: Honestidad, Responsabilidad, Respeto, Compromiso, Lealtad
+- Certificaciones: ISO 9001:2015, ISO 14001:2015, ISO 45001:2018, ISO 50001:2018
+- Estudiantes: ~1,800 | Docentes: 98 | Computadoras: 500+
+- Misión: Formar profesionistas de excelencia en ciencia y tecnología
+- Visión: Ser elemento fundamental del desarrollo sustentable del estado
+
+CARRERAS (6 ingenierías + 1 maestría):
+1. Ing. Industrial (mayor matrícula ~700 alumnos) - Escolarizada y Mixta
+2. Ing. en Gestión Empresarial - Escolarizada y Mixta
+3. Ing. Electromecánica (~345 alumnos) - Escolarizada
+4. Ing. en Sistemas Computacionales - Escolarizada, Mixta y Virtual
+5. Ing. en Energías Renovables - Escolarizada
+6. Ing. Civil - Escolarizada ($3,150 inscripción)
+7. Maestría en Ingeniería Administrativa - Escolarizada (Posgrado)
+
+COSTOS DE ADMISIÓN:
+- Ficha: $750 | Inscripción escolarizada: $2,900 | Ing. Civil: $3,150 | Mixta: $3,650
+- Banco: BBVA cuenta 0113571645, CLABE 012150001135716452
+- También se puede pagar en Caja del Edificio Principal
+
+PLATAFORMAS: SII (Sistema Integral de Información), MOODLE, SIG, SIRH
+INSTANCIAS: Protección Civil, CVG (violencia de género), SGIG (igualdad), SEPCI (ética)
+INSTALACIONES: Gimnasio-auditorio (2022), campo sintético, sala de pesas, biblioteca, centro de cómputo 500+ equipos, laboratorios
+
+REGLAS DE RESPUESTA:
+- Responde siempre en español
+- Sé breve y directo (máximo 3-4 líneas)
+- Si no sabes algo, sugiere acudir a Servicios Escolares (L-V 9:00-15:00) o llamar al 639 132 6500
+- No inventes información, solo usa datos verificados
+- Sé amigable y profesional
+`;

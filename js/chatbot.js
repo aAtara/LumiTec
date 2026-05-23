@@ -1,10 +1,40 @@
 /* ============================================
    Motor del Chatbot LumiTec
+   Con integración de IA (Claude API)
    ============================================ */
 
 const Chatbot = (() => {
   const messagesContainer = document.getElementById('chatMessages');
 
+  // --- Configuración de IA ---
+  let aiEnabled = false;
+  let apiKey = sessionStorage.getItem('lumitec_api_key') || '';
+
+  function setApiKey(key) {
+    apiKey = key.trim();
+    if (apiKey) {
+      sessionStorage.setItem('lumitec_api_key', apiKey);
+      aiEnabled = true;
+    } else {
+      sessionStorage.removeItem('lumitec_api_key');
+      aiEnabled = false;
+    }
+    updateAIBadge();
+  }
+
+  function isAIActive() {
+    return aiEnabled && apiKey.length > 0;
+  }
+
+  function updateAIBadge() {
+    const badge = document.getElementById('aiBadge');
+    if (badge) {
+      badge.classList.toggle('ai-badge--active', isAIActive());
+      badge.textContent = isAIActive() ? 'IA Activa' : 'IA Inactiva';
+    }
+  }
+
+  // --- Normalización de texto ---
   function normalizeText(text) {
     return text
       .toLowerCase()
@@ -29,6 +59,7 @@ const Chatbot = (() => {
     return word.length > 2 && !STOP_WORDS.has(word);
   }
 
+  // --- Motor de búsqueda local ---
   function findBestMatch(userInput) {
     const normalized = normalizeText(userInput);
     const words = normalized.split(/\s+/);
@@ -80,15 +111,59 @@ const Chatbot = (() => {
     return bestScore >= 3 ? bestMatch : null;
   }
 
+  // --- Motor de IA (Claude API) ---
+  async function callClaudeAPI(userText) {
+    if (!isAIActive()) return null;
+
+    try {
+      const response = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': apiKey,
+          'anthropic-version': '2023-06-01',
+          'anthropic-dangerous-direct-browser-access': 'true'
+        },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-20250514',
+          max_tokens: 300,
+          system: INSTITUTIONAL_CONTEXT,
+          messages: [{ role: 'user', content: userText }]
+        })
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        console.warn('LumiTec IA - Error:', response.status, errorData);
+        if (response.status === 401) {
+          addMessage('⚠️ La API key no es válida. Revisa tu configuración en el panel de IA.', 'bot');
+          return '__error__';
+        }
+        return null;
+      }
+
+      const data = await response.json();
+      if (data.content && data.content[0] && data.content[0].text) {
+        return data.content[0].text;
+      }
+      return null;
+    } catch (err) {
+      console.error('LumiTec IA - Error de conexion:', err);
+      return null;
+    }
+  }
+
+  // --- Respuesta por defecto ---
   function getDefaultResponse() {
     const responses = [
       'No tengo información sobre eso, pero puedo ayudarte con ubicaciones del campus, trámites escolares u horarios. ¿Qué necesitas?',
-      'No encontré una respuesta para tu pregunta. Te sugiero acudir directamente a Servicios Escolares (L-V 9:00-15:00) o llamar al (639) 474 5640.',
+      'No encontré una respuesta para tu pregunta. Te sugiero acudir directamente a Servicios Escolares (L-V 9:00-15:00) o llamar al 639 132 6500.',
       'Hmm, no tengo esa información. Prueba preguntándome sobre: carreras, ubicaciones de edificios, trámites o horarios del Tec.',
     ];
     return responses[Math.floor(Math.random() * responses.length)];
   }
 
+  // --- Elementos de UI ---
   function createMessageElement(text, type, buildingId) {
     const wrapper = document.createElement('div');
     wrapper.classList.add('msg', `msg--${type}`);
@@ -138,7 +213,8 @@ const Chatbot = (() => {
     scrollToBottom();
   }
 
-  function processInput(userText) {
+  // --- Procesamiento principal ---
+  async function processInput(userText) {
     if (!userText.trim()) return;
 
     addMessage(userText, 'user');
@@ -147,18 +223,34 @@ const Chatbot = (() => {
     messagesContainer.appendChild(typing);
     scrollToBottom();
 
-    const delay = 400 + Math.random() * 600;
+    // Paso 1: Buscar en la base de conocimiento local
+    const match = findBestMatch(userText);
 
-    setTimeout(() => {
-      typing.remove();
-      const match = findBestMatch(userText);
-
-      if (match) {
+    if (match) {
+      // Respuesta local encontrada (rapida)
+      const delay = 400 + Math.random() * 600;
+      setTimeout(() => {
+        typing.remove();
         addMessage(match.response, 'bot', match.building || null);
-      } else {
+      }, delay);
+    } else if (isAIActive()) {
+      // Paso 2: Fallback a IA cuando no hay respuesta local
+      const aiResponse = await callClaudeAPI(userText);
+      typing.remove();
+
+      if (aiResponse && aiResponse !== '__error__') {
+        addMessage(aiResponse, 'bot');
+      } else if (aiResponse !== '__error__') {
         addMessage(getDefaultResponse(), 'bot');
       }
-    }, delay);
+    } else {
+      // Sin IA, respuesta por defecto
+      const delay = 400 + Math.random() * 600;
+      setTimeout(() => {
+        typing.remove();
+        addMessage(getDefaultResponse(), 'bot');
+      }, delay);
+    }
   }
 
   function sendWelcomeMessage() {
@@ -170,9 +262,17 @@ const Chatbot = (() => {
     }, 500);
   }
 
+  // Activar IA si habia una key guardada
+  if (apiKey) {
+    aiEnabled = true;
+  }
+
   return {
     processInput,
     sendWelcomeMessage,
     addMessage,
+    setApiKey,
+    isAIActive,
+    updateAIBadge,
   };
 })();
