@@ -10,7 +10,7 @@ const Chatbot = (() => {
   // CONFIGURACIÓN DE IA - Pon tu API key de Gemini aquí
   // Es GRATIS. Obtén una en: https://aistudio.google.com/apikey
   // ====================================================
-  const GEMINI_API_KEY = '';
+  const GEMINI_API_KEY = 'AIzaSyCZ3-7MQyTQIvEukEvY9aORjPDDT2r2xMw';
   // ====================================================
 
   // --- Normalización de texto ---
