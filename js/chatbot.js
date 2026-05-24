@@ -1,16 +1,16 @@
 /* ============================================
    Motor del Chatbot LumiTec
-   Con integración de IA (Claude API)
+   Con integración de IA (Google Gemini - GRATIS)
    ============================================ */
 
 const Chatbot = (() => {
   const messagesContainer = document.getElementById('chatMessages');
 
   // ====================================================
-  // CONFIGURACIÓN DE IA - Pon tu API key aquí
-  // Obtén una en: https://console.anthropic.com/
+  // CONFIGURACIÓN DE IA - Pon tu API key de Gemini aquí
+  // Es GRATIS. Obtén una en: https://aistudio.google.com/apikey
   // ====================================================
-  const API_KEY = '';
+  const GEMINI_API_KEY = '';
   // ====================================================
 
   // --- Normalización de texto ---
@@ -90,28 +90,31 @@ const Chatbot = (() => {
     return bestScore >= 3 ? bestMatch : null;
   }
 
-  // --- Motor de IA (Claude API) ---
+  // --- Motor de IA (Google Gemini - GRATIS) ---
   function isAIActive() {
-    return API_KEY.length > 0;
+    return GEMINI_API_KEY.length > 0;
   }
 
-  async function callClaudeAPI(userText) {
+  async function callGeminiAPI(userText) {
     if (!isAIActive()) return null;
 
     try {
-      const response = await fetch('https://api.anthropic.com/v1/messages', {
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
+
+      const response = await fetch(url, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-api-key': API_KEY,
-          'anthropic-version': '2023-06-01',
-          'anthropic-dangerous-direct-browser-access': 'true'
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          model: 'claude-sonnet-4-20250514',
-          max_tokens: 300,
-          system: INSTITUTIONAL_CONTEXT,
-          messages: [{ role: 'user', content: userText }]
+          system_instruction: {
+            parts: [{ text: INSTITUTIONAL_CONTEXT }]
+          },
+          contents: [{
+            parts: [{ text: userText }]
+          }],
+          generationConfig: {
+            maxOutputTokens: 300,
+            temperature: 0.7
+          }
         })
       });
 
@@ -121,8 +124,10 @@ const Chatbot = (() => {
       }
 
       const data = await response.json();
-      if (data.content && data.content[0] && data.content[0].text) {
-        return data.content[0].text;
+      if (data.candidates && data.candidates[0] &&
+          data.candidates[0].content && data.candidates[0].content.parts &&
+          data.candidates[0].content.parts[0]) {
+        return data.candidates[0].content.parts[0].text;
       }
       return null;
     } catch (err) {
@@ -212,8 +217,8 @@ const Chatbot = (() => {
         addMessage(match.response, 'bot', match.building || null);
       }, delay);
     } else if (isAIActive()) {
-      // Paso 2: Fallback a IA cuando no hay respuesta local
-      const aiResponse = await callClaudeAPI(userText);
+      // Paso 2: Fallback a Gemini cuando no hay respuesta local
+      const aiResponse = await callGeminiAPI(userText);
       typing.remove();
 
       if (aiResponse) {
