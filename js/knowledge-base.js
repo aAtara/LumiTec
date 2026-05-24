@@ -299,12 +299,137 @@ const KNOWLEDGE_BASE = {
     category: 'info'
   },
 
-  // --- INFORMACIÓN GENERAL ---
+  // --- PERSONAL DIRECTIVO Y ORGANIGRAMA ---
   directora: {
     keywords: ['directora', 'director', 'quién dirige', 'quien dirige', 'lilian', 'santiesteban'],
-    response: 'La directora del TecNM Campus Delicias es la Mtra. Lilian Karina Santiesteban Torres. Su oficina está en el Edificio Principal (Dirección). Correo: dir_delicias@tecnm.mx',
+    response: 'La directora del TecNM Campus Delicias es la Mtra. Lilian Karina Santiesteban Torres. Cuenta con 3 subdirecciones: Académica (Mtra. Mirna Araceli Acosta Rodríguez), Planeación y Vinculación (Mtro. Jorge Luis Alba Aldaz) y Servicios Administrativos (Hilario Ramírez Moreno). Oficina en el Edificio Principal. Correo: dir_delicias@tecnm.mx',
     category: 'info',
     building: 'direccion'
+  },
+
+  subdirectores: {
+    keywords: ['subdirector', 'subdirectora', 'subdirecciones', 'mirna acosta', 'jorge alba', 'hilario ramírez', 'hilario ramirez'],
+    response: 'Subdirecciones del TecNM Delicias: • Subdirectora Académica: Mtra. Mirna Araceli Acosta Rodríguez • Subdirector de Planeación y Vinculación: Mtro. Jorge Luis Alba Aldaz • Subdirector de Servicios Administrativos: Hilario Ramírez Moreno. Ubicados en el Edificio Principal.',
+    category: 'info',
+    building: 'direccion'
+  },
+
+  organigrama: {
+    keywords: ['organigrama', 'estructura', 'personal', 'quiénes trabajan', 'quienes trabajan', 'jefes de departamento', 'jefes', 'departamentos'],
+    response: 'El Tec tiene: Directora (Mtra. Lilian Santiesteban), 3 Subdirecciones y 22 jefes de departamento. Algunos jefes: Mtro. Emmanuel Morales (Industrial), Ing. Víctor González (Sistemas), Ing. Alejandro Cortéz (Electromecánica), Dr. Gilberto Peralta (Servicios Escolares), C.P. Julieta Martínez (Desarrollo Académico), Ing. David Álvarez (División de Estudios Profesionales). Consulta el organigrama completo en delicias.tecnm.mx/personal',
+    category: 'info'
+  },
+
+  jefeIndustrial: {
+    keywords: ['jefe de industrial', 'emmanuel morales', 'departamento de industrial'],
+    response: 'El Jefe del Departamento de Industrial es el Mtro. Emmanuel Morales Chávez. Acude a su oficina para asesoría académica de la carrera.',
+    category: 'info'
+  },
+
+  jefeSistemas: {
+    keywords: ['jefe de sistemas', 'víctor gonzález', 'victor gonzalez', 'departamento de sistemas', 'jefe del dais'],
+    response: 'El Jefe del Departamento de Sistemas Computacionales es el Ing. Víctor Manuel González Miranda. Su oficina está en el DAIS.',
+    category: 'info',
+    building: 'dais'
+  },
+
+  jefeElectromecanica: {
+    keywords: ['jefe de electromecánica', 'jefe de electromecanica', 'alejandro cortéz', 'alejandro cortez', 'departamento de metalmecánica', 'departamento de metalmecanica'],
+    response: 'El Jefe del Departamento de Metalmecánica es el Ing. Alejandro Cortéz Cortéz. Acude a su oficina para asesoría de Ing. Electromecánica.',
+    category: 'info'
+  },
+
+  jefeServiciosEscolares: {
+    keywords: ['jefe de servicios escolares', 'gilberto peralta', 'gabriel peralta'],
+    response: 'El Jefe del Departamento de Servicios Escolares es el Dr. Gilberto Gabriel Peralta. Atiende en Servicios Escolares, L-V 9:00-15:00 hrs.',
+    category: 'info',
+    building: 'servicios-escolares'
+  },
+
+  jefeComunicacion: {
+    keywords: ['comunicación', 'comunicacion', 'difusión', 'difusion', 'aranxa', 'rocío lópez', 'rocio lopez'],
+    response: 'La Jefa del Departamento de Comunicación y Difusión es la Lic. Aranxa del Rocío López Avitia. Correo: comunicacion@delicias.tecnm.mx',
+    category: 'info'
+  },
+
+  jefeVinculacion: {
+    keywords: ['gestión tecnológica', 'gestion tecnologica', 'vinculación departamento', 'vinculacion departamento', 'maría baray', 'maria baray', 'rosario baray'],
+    response: 'La Jefa del Departamento de Gestión Tecnológica y Vinculación es la Dra. María del Rosario Baray Guerrero. Coordina servicio social, residencias profesionales y vinculación con empresas.',
+    category: 'info'
+  },
+
+  jefeDesarrolloAcademico: {
+    keywords: ['desarrollo académico jefe', 'julieta martínez', 'julieta martinez', 'cereceres'],
+    response: 'La Jefa del Departamento de Desarrollo Académico es la C.P. Julieta Martínez Cereceres. Coordina la oferta educativa y admisión. Tel: 639 168 13 21.',
+    category: 'info'
+  },
+
+  jefeCentroComputo: {
+    keywords: ['centro de cómputo jefe', 'centro de computo jefe', 'jorge gonzález hernández', 'jorge gonzalez hernandez'],
+    response: 'El Jefe del Centro de Cómputo es el Ing. Jorge González Hernández. Brinda soporte técnico y administra los 500+ equipos del campus.',
+    category: 'info',
+    building: 'lab-computo'
+  },
+
+  jefeCentroInformacion: {
+    keywords: ['centro de información jefe', 'centro de informacion jefe', 'juan solano', 'bibliotecario'],
+    response: 'El Jefe del Centro de Información (Biblioteca) es el Mtro. Juan Solano Sánchez.',
+    category: 'info',
+    building: 'biblioteca'
+  },
+
+  jefeExtraescolares: {
+    keywords: ['extraescolares jefe', 'actividades extraescolares jefe', 'javier hinostroza'],
+    response: 'El Jefe del Departamento de Actividades Extraescolares es el Ing. Javier Hinostroza Alcantar. Coordina deportes, actividades culturales y complementarias.',
+    category: 'info'
+  },
+
+  jefeDivisionEstudios: {
+    keywords: ['división de estudios', 'division de estudios', 'estudios profesionales', 'david álvarez', 'david alvarez'],
+    response: 'El Jefe de la División de Estudios Profesionales es el Ing. David Álvarez Sánchez. Coordina los programas académicos de todas las carreras.',
+    category: 'info'
+  },
+
+  jefeRecursosHumanos: {
+    keywords: ['recursos humanos', 'luis peña', 'luis pena'],
+    response: 'El Jefe del Departamento de Recursos Humanos es el Ing. Luis Peña Muñoz.',
+    category: 'info'
+  },
+
+  jefeRecursosMateriales: {
+    keywords: ['recursos materiales', 'aldo alarcón', 'aldo alarcon'],
+    response: 'El Jefe del Departamento de Recursos Materiales es el Mtro. Aldo Alarcón.',
+    category: 'info'
+  },
+
+  jefeRecursosFinancieros: {
+    keywords: ['recursos financieros', 'adrián aguirre', 'adrian aguirre'],
+    response: 'El Jefe del Departamento de Recursos Financieros es el Ing. Adrián Enrique Aguirre Velasco.',
+    category: 'info'
+  },
+
+  jefePlaneacion: {
+    keywords: ['planeación departamento', 'planeacion departamento', 'programación y presupuesto', 'programacion y presupuesto', 'yazmín moreno', 'yazmin moreno'],
+    response: 'La Jefa del Departamento de Planeación, Programación y Presupuestación es la Q.B.P. Yazmín Moreno Chacón.',
+    category: 'info'
+  },
+
+  jefeMantenimiento: {
+    keywords: ['mantenimiento', 'mantenimiento de equipo', 'jesús bolívar', 'jesus bolivar', 'bolívar holguín'],
+    response: 'El Jefe del Departamento de Mantenimiento de Equipo es el Ing. Jesús José Bolívar Holguín.',
+    category: 'info'
+  },
+
+  jefeCienciasBasicas: {
+    keywords: ['ciencias básicas', 'ciencias basicas', 'antonio álvarez', 'antonio alvarez'],
+    response: 'El Jefe del Departamento de Ciencias Básicas es el Ing. Antonio Álvarez Sánchez.',
+    category: 'info'
+  },
+
+  jefeCienciasEconomicas: {
+    keywords: ['ciencias económico', 'ciencias economico', 'administrativas', 'rosalinda garcía', 'rosalinda garcia', 'garcía cantón', 'garcia canton'],
+    response: 'La Jefa del Departamento de Ciencias Económico-Administrativas es la C.P. Rosalinda García Cantón.',
+    category: 'info'
   },
 
   telefono: {
@@ -519,6 +644,31 @@ INFORMACIÓN INSTITUCIONAL:
 - Estudiantes: ~1,800 | Docentes: 98 | Computadoras: 500+
 - Misión: Formar profesionistas de excelencia en ciencia y tecnología
 - Visión: Ser elemento fundamental del desarrollo sustentable del estado
+
+ORGANIGRAMA / PERSONAL DIRECTIVO:
+- Directora: Mtra. Lilian Karina Santiesteban Torres
+- Subdirectora Académica: Mtra. Mirna Araceli Acosta Rodríguez
+- Subdirector de Planeación y Vinculación: Mtro. Jorge Luis Alba Aldaz
+- Subdirector de Servicios Administrativos: Hilario Ramírez Moreno
+Jefes de departamento:
+- Industrial: Mtro. Emmanuel Morales Chávez
+- Metalmecánica (Electromecánica): Ing. Alejandro Cortéz Cortéz
+- Sistemas Computacionales: Ing. Víctor Manuel González Miranda
+- Ciencias Básicas: Ing. Antonio Álvarez Sánchez
+- Ciencias Económico-Administrativas: C.P. Rosalinda García Cantón
+- Desarrollo Académico: C.P. Julieta Martínez Cereceres
+- División de Estudios Profesionales: Ing. David Álvarez Sánchez
+- Servicios Escolares: Dr. Gilberto Gabriel Peralta
+- Comunicación y Difusión: Lic. Aranxa del Rocío López Avitia
+- Centro de Información (Biblioteca): Mtro. Juan Solano Sánchez
+- Gestión Tecnológica y Vinculación: Dra. María del Rosario Baray Guerrero
+- Planeación, Programación y Presupuestación: Q.B.P. Yazmín Moreno Chacón
+- Actividades Extraescolares: Ing. Javier Hinostroza Alcantar
+- Recursos Humanos: Ing. Luis Peña Muñoz
+- Recursos Materiales: Mtro. Aldo Alarcón
+- Recursos Financieros: Ing. Adrián Enrique Aguirre Velasco
+- Centro de Cómputo: Ing. Jorge González Hernández
+- Mantenimiento de Equipo: Ing. Jesús José Bolívar Holguín
 
 CARRERAS (6 ingenierías + 1 maestría):
 1. Ing. Industrial (mayor matrícula ~700 alumnos) - Escolarizada y Mixta
