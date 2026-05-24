@@ -192,8 +192,8 @@ const KNOWLEDGE_BASE = {
   },
 
   dais: {
-    keywords: ['dais', 'departamento de sistemas', 'jefe de carrera sistemas', 'jefe de sistemas'],
-    response: 'El DAIS (Departamento de Ingeniería en Sistemas Computacionales) está en la zona norte-central del campus. Jefatura de carrera y asesoría académica de ISC. Horario: L-V 9:00-15:00 hrs.',
+    keywords: ['dais', 'dónde está el dais', 'donde esta el dais', 'edificio del dais', 'oficina de sistemas'],
+    response: 'El DAIS (Departamento de Ingeniería en Sistemas Computacionales) está en la zona norte-central del campus. Jefe: Ing. Víctor Manuel González Miranda. Jefatura de carrera y asesoría académica de ISC. Horario: L-V 9:00-15:00 hrs.',
     category: 'ubicacion',
     building: 'dais'
   },
@@ -315,7 +315,7 @@ const KNOWLEDGE_BASE = {
   },
 
   organigrama: {
-    keywords: ['organigrama', 'estructura', 'personal', 'quiénes trabajan', 'quienes trabajan', 'jefes de departamento', 'jefes', 'departamentos'],
+    keywords: ['organigrama', 'estructura organizacional', 'personal directivo', 'quiénes trabajan', 'quienes trabajan', 'jefes de departamento', 'nombres de los jefes', 'todos los jefes', 'departamentos del tec'],
     response: 'El Tec tiene: Directora (Mtra. Lilian Santiesteban), 3 Subdirecciones y 22 jefes de departamento. Algunos jefes: Mtro. Emmanuel Morales (Industrial), Ing. Víctor González (Sistemas), Ing. Alejandro Cortéz (Electromecánica), Dr. Gilberto Peralta (Servicios Escolares), C.P. Julieta Martínez (Desarrollo Académico), Ing. David Álvarez (División de Estudios Profesionales). Consulta el organigrama completo en delicias.tecnm.mx/personal',
     category: 'info'
   },
