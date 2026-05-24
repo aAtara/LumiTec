@@ -6,33 +6,12 @@
 const Chatbot = (() => {
   const messagesContainer = document.getElementById('chatMessages');
 
-  // --- Configuración de IA ---
-  let aiEnabled = false;
-  let apiKey = sessionStorage.getItem('lumitec_api_key') || '';
-
-  function setApiKey(key) {
-    apiKey = key.trim();
-    if (apiKey) {
-      sessionStorage.setItem('lumitec_api_key', apiKey);
-      aiEnabled = true;
-    } else {
-      sessionStorage.removeItem('lumitec_api_key');
-      aiEnabled = false;
-    }
-    updateAIBadge();
-  }
-
-  function isAIActive() {
-    return aiEnabled && apiKey.length > 0;
-  }
-
-  function updateAIBadge() {
-    const badge = document.getElementById('aiBadge');
-    if (badge) {
-      badge.classList.toggle('ai-badge--active', isAIActive());
-      badge.textContent = isAIActive() ? 'IA Activa' : 'IA Inactiva';
-    }
-  }
+  // ====================================================
+  // CONFIGURACIÓN DE IA - Pon tu API key aquí
+  // Obtén una en: https://console.anthropic.com/
+  // ====================================================
+  const API_KEY = '';
+  // ====================================================
 
   // --- Normalización de texto ---
   function normalizeText(text) {
@@ -112,6 +91,10 @@ const Chatbot = (() => {
   }
 
   // --- Motor de IA (Claude API) ---
+  function isAIActive() {
+    return API_KEY.length > 0;
+  }
+
   async function callClaudeAPI(userText) {
     if (!isAIActive()) return null;
 
@@ -120,7 +103,7 @@ const Chatbot = (() => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-api-key': apiKey,
+          'x-api-key': API_KEY,
           'anthropic-version': '2023-06-01',
           'anthropic-dangerous-direct-browser-access': 'true'
         },
@@ -133,12 +116,7 @@ const Chatbot = (() => {
       });
 
       if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        console.warn('LumiTec IA - Error:', response.status, errorData);
-        if (response.status === 401) {
-          addMessage('⚠️ La API key no es válida. Revisa tu configuración en el panel de IA.', 'bot');
-          return '__error__';
-        }
+        console.warn('LumiTec IA - Error:', response.status);
         return null;
       }
 
@@ -148,7 +126,7 @@ const Chatbot = (() => {
       }
       return null;
     } catch (err) {
-      console.error('LumiTec IA - Error de conexion:', err);
+      console.error('LumiTec IA - Error de conexión:', err);
       return null;
     }
   }
@@ -227,7 +205,7 @@ const Chatbot = (() => {
     const match = findBestMatch(userText);
 
     if (match) {
-      // Respuesta local encontrada (rapida)
+      // Respuesta local encontrada (rápida)
       const delay = 400 + Math.random() * 600;
       setTimeout(() => {
         typing.remove();
@@ -238,9 +216,9 @@ const Chatbot = (() => {
       const aiResponse = await callClaudeAPI(userText);
       typing.remove();
 
-      if (aiResponse && aiResponse !== '__error__') {
+      if (aiResponse) {
         addMessage(aiResponse, 'bot');
-      } else if (aiResponse !== '__error__') {
+      } else {
         addMessage(getDefaultResponse(), 'bot');
       }
     } else {
@@ -262,17 +240,9 @@ const Chatbot = (() => {
     }, 500);
   }
 
-  // Activar IA si habia una key guardada
-  if (apiKey) {
-    aiEnabled = true;
-  }
-
   return {
     processInput,
     sendWelcomeMessage,
     addMessage,
-    setApiKey,
-    isAIActive,
-    updateAIBadge,
   };
 })();
