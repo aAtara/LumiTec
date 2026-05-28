@@ -245,9 +245,35 @@
       <p class="footer__text footer__text--small">
         Paseo Tecnológico Km 3.5, Col. Tecnológico, C.P. 33000, Delicias, Chihuahua &bull; Tel: 639 132 6500
       </p>
-      <button class="footer__privacy-btn" id="privacyBtn">Aviso de Privacidad</button>
+      <div class="footer__links">
+        <button class="footer__privacy-btn" id="privacyBtn">Aviso de Privacidad</button>
+        <button class="footer__privacy-btn" id="qrBtn">Compartir QR</button>
+      </div>
     </div>
   </footer>
+
+  <!-- ==================== MODAL QR CODE ==================== -->
+  <div class="modal-overlay" id="qrModal" role="dialog" aria-modal="true" aria-labelledby="qrModalTitle">
+    <div class="modal">
+      <div class="modal__header">
+        <h2 class="modal__title" id="qrModalTitle">Comparte LumiTec</h2>
+        <button class="modal__close" id="closeQr" aria-label="Cerrar">&times;</button>
+      </div>
+      <div class="modal__body" style="text-align:center;">
+        <p>Escanea el QR para acceder a LumiTec desde tu celular:</p>
+        <img
+          src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://aAtara.github.io/LumiTec/"
+          alt="QR Code para acceder a LumiTec"
+          width="250"
+          height="250"
+          style="margin: 16px auto; display:block; border-radius:8px;"
+        >
+        <p style="font-size:0.8rem; color:#65676b; margin-top:8px;">
+          <strong>aatara.github.io/LumiTec</strong>
+        </p>
+      </div>
+    </div>
+  </div>
 
   <!-- ==================== MODAL AVISO DE PRIVACIDAD ==================== -->
   <div class="modal-overlay" id="privacyModal" role="dialog" aria-modal="true" aria-labelledby="privacyModalTitle">

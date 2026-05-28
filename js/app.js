@@ -12,6 +12,9 @@ const App = (() => {
   const privacyBtn = document.getElementById('privacyBtn');
   const privacyModal = document.getElementById('privacyModal');
   const closePrivacy = document.getElementById('closePrivacy');
+  const qrBtn = document.getElementById('qrBtn');
+  const qrModal = document.getElementById('qrModal');
+  const closeQr = document.getElementById('closeQr');
 
   function init() {
     tabButtons.forEach(btn => {
@@ -45,6 +48,15 @@ const App = (() => {
       if (e.target === privacyModal) closeModal();
     });
 
+    qrBtn.addEventListener('click', () => {
+      qrModal.classList.add('modal-overlay--visible');
+    });
+
+    closeQr.addEventListener('click', closeModal);
+    qrModal.addEventListener('click', (e) => {
+      if (e.target === qrModal) closeModal();
+    });
+
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') closeModal();
     });
@@ -72,6 +84,7 @@ const App = (() => {
 
   function closeModal() {
     privacyModal.classList.remove('modal-overlay--visible');
+    qrModal.classList.remove('modal-overlay--visible');
   }
 
   return {

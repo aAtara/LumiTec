@@ -556,8 +556,14 @@ input {
   margin-top: 4px;
 }
 
-.footer__privacy-btn {
+.footer__links {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
   margin-top: 8px;
+}
+
+.footer__privacy-btn {
   color: var(--dorado);
   font-size: 0.75rem;
   text-decoration: underline;
