@@ -1,0 +1,14 @@
+{
+  "name": "lumitec-ia",
+  "main": "src/index.js",
+  "compatibility_date": "2026-10-01",
+  // La clave GEMINI_API_KEY NO va aquí: se guarda con `npm run secret`
+  "ratelimits": [
+    {
+      "name": "RATE_LIMITER",
+      "namespace_id": "1001",
+      // Por IP; en el Wi-Fi del Tec muchos alumnos comparten la misma IP pública
+      "simple": { "limit": 20, "period": 60 }
+    }
+  ]
+}

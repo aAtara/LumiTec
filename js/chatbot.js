@@ -7,10 +7,11 @@ const Chatbot = (() => {
   const messagesContainer = document.getElementById('chatMessages');
 
   // ====================================================
-  // CONFIGURACIÓN DE IA - Pon tu API key de Gemini aquí
-  // Es GRATIS. Obtén una en: https://aistudio.google.com/apikey
+  // CONFIGURACIÓN DE IA
+  // La clave de Gemini NO va en el sitio (es público y Google la bloquea).
+  // Vive como secreto en el proxy de Cloudflare: ver worker/
   // ====================================================
-  const GEMINI_API_KEY = 'AIzaSyCZ3-7MQyTQIvEukEvY9aORjPDDT2r2xMw';
+  const AI_PROXY_URL = 'https://lumitec-ia.lumitec-ia.workers.dev';
   // ====================================================
 
   // --- Normalización de texto ---
@@ -90,46 +91,27 @@ const Chatbot = (() => {
     return bestScore >= 3 ? bestMatch : null;
   }
 
-  // --- Motor de IA (Google Gemini - GRATIS) ---
+  // --- Motor de IA (Google Gemini vía proxy) ---
   function isAIActive() {
-    return GEMINI_API_KEY.length > 0;
+    return AI_PROXY_URL.length > 0;
   }
 
-  async function callGeminiAPI(userText) {
+  async function callAI(userText) {
     if (!isAIActive()) return null;
 
     try {
-      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
-
-      const response = await fetch(url, {
+      const response = await fetch(AI_PROXY_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          system_instruction: {
-            parts: [{ text: INSTITUTIONAL_CONTEXT }]
-          },
-          contents: [{
-            parts: [{ text: userText }]
-          }],
-          generationConfig: {
-            maxOutputTokens: 300,
-            temperature: 0.7
-          }
-        })
+        body: JSON.stringify({ message: userText.slice(0, 500) })
       });
 
+      const data = await response.json().catch(() => ({}));
       if (!response.ok) {
-        console.warn('LumiTec IA - Error:', response.status);
+        console.warn('LumiTec IA - Error:', response.status, data.error || '');
         return null;
       }
-
-      const data = await response.json();
-      if (data.candidates && data.candidates[0] &&
-          data.candidates[0].content && data.candidates[0].content.parts &&
-          data.candidates[0].content.parts[0]) {
-        return data.candidates[0].content.parts[0].text;
-      }
-      return null;
+      return data.reply || null;
     } catch (err) {
       console.error('LumiTec IA - Error de conexión:', err);
       return null;
@@ -218,7 +200,7 @@ const Chatbot = (() => {
       }, delay);
     } else if (isAIActive()) {
       // Paso 2: Fallback a Gemini cuando no hay respuesta local
-      const aiResponse = await callGeminiAPI(userText);
+      const aiResponse = await callAI(userText);
       typing.remove();
 
       if (aiResponse) {
