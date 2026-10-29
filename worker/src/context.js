@@ -61,6 +61,15 @@ COSTOS DE ADMISIÓN:
 - Banco: BBVA cuenta 0113571645, CLABE 012150001135716452
 - También se puede pagar en Caja del Edificio Principal
 
+CALENDARIO ACADÉMICO AGO-DIC 2026 (periodo actual):
+- Escolarizado: clases del 17 de agosto al 4 de diciembre; exámenes de segunda oportunidad del 7 al 11 de diciembre
+- Mixto: 1er trimestre del 8 de agosto al 10 de octubre; 2do trimestre del 17 de octubre al 19 de diciembre
+- Días de descanso obligatorio: 16 de septiembre, 2 de noviembre y 16 de noviembre
+- Vacaciones de invierno: del 21 de diciembre de 2026 al 5 de enero de 2027
+- Cambios de carrera y traslados: del 3 al 30 de noviembre
+- Admisión ENE-JUN 2027: fichas del 21 de septiembre al 22 de diciembre de 2026; test de colocación el 4 de enero de 2027; resultados el 6 de enero de 2027
+- La fecha de inicio de clases de ENE-JUN 2027 aún no está en el calendario: sugiere consultar delicias.tecnm.mx
+
 PLATAFORMAS: SII (Sistema Integral de Información), MOODLE, SIG, SIRH
 INSTANCIAS: Protección Civil, CVG (violencia de género), SGIG (igualdad), SEPCI (ética)
 INSTALACIONES: Gimnasio-auditorio (2022), campo sintético, sala de pesas, biblioteca, centro de cómputo 500+ equipos, laboratorios

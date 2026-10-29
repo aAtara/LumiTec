@@ -4,6 +4,8 @@
    --- INFORMACIÓN VERIFICADA ---
    Extraída directamente de delicias.tecnm.mx
    Última actualización: Mayo 2026
+   Calendario y fechas de admisión: Octubre 2026
+   (Calendario Académico AGO-DIC 2026 publicado en delicias.tecnm.mx)
    ============================================ */
 
 const KNOWLEDGE_BASE = {
@@ -59,7 +61,7 @@ const KNOWLEDGE_BASE = {
   },
 
   ingenieriaSistemas: {
-    keywords: ['sistemas computacionales', 'isc', 'programación', 'programacion', 'software', 'computación', 'computacion'],
+    keywords: ['sistemas computacionales', 'carrera de sistemas', 'isc', 'programación', 'programacion', 'software', 'computación', 'computacion'],
     response: 'Ingeniería en Sistemas Computacionales (ISC) se enfoca en desarrollo de software, redes y tecnologías de la información. Disponible en modalidad escolarizada, mixta y VIRTUAL. El departamento académico es el DAIS. El campus tiene más de 500 equipos de cómputo.',
     category: 'info'
   },
@@ -84,8 +86,8 @@ const KNOWLEDGE_BASE = {
 
   // --- ADMISIÓN ---
   nuevoIngreso: {
-    keywords: ['nuevo ingreso', 'primer semestre', 'recién entro', 'recien entro', 'soy nuevo', 'voy a entrar', 'admisión', 'admision', 'ficha', 'examen de admisión', 'quiero entrar', 'inscribirme por primera vez'],
-    response: 'Proceso de admisión: 1) Regístrate en delicias.tecnm.mx/admision. 2) Paga tu ficha ($750). 3) Genera tu NIP y llena la encuesta socioeconómica. 4) Presenta el test de colocación en línea. Debes estar en tu último semestre de bachillerato o haberlo terminado. Consulta fechas en la página.',
+    keywords: ['nuevo ingreso', 'primer semestre', 'recién entro', 'recien entro', 'soy nuevo', 'voy a entrar', 'admisión', 'admision', 'ficha', 'quiero entrar', 'inscribirme por primera vez'],
+    response: 'Proceso de admisión: 1) Regístrate en delicias.tecnm.mx/admision. 2) Paga tu ficha ($750). 3) Genera tu NIP y llena la encuesta socioeconómica. 4) Presenta el test de colocación en línea. Debes estar en tu último semestre de bachillerato o haberlo terminado. Fichas para ENE-JUN 2027: del 21 de septiembre al 22 de diciembre de 2026; test de colocación el 4 de enero de 2027 y resultados el 6 de enero.',
     category: 'tramite'
   },
 
@@ -96,8 +98,8 @@ const KNOWLEDGE_BASE = {
   },
 
   examenAdmision: {
-    keywords: ['examen admisión', 'examen admision', 'test colocación', 'test colocacion', 'examen de ingreso', 'guía de estudio', 'guia de estudio'],
-    response: 'El examen de admisión es un "test de colocación" en línea. La guía de estudio está disponible para descarga en delicias.tecnm.mx/admision. Consulta las fechas exactas en la página y redes sociales del Tec.',
+    keywords: ['examen admisión', 'examen admision', 'examen de admisión', 'examen de admision', 'test colocación', 'test colocacion', 'test de colocación', 'test de colocacion', 'examen de ingreso', 'guía de estudio', 'guia de estudio'],
+    response: 'El examen de admisión es un "test de colocación" en línea. El próximo es el 4 de enero de 2027 y los resultados se publican el 6 de enero. La guía de estudio está disponible para descarga en delicias.tecnm.mx/admision.',
     category: 'tramite'
   },
 
@@ -206,7 +208,7 @@ const KNOWLEDGE_BASE = {
   },
 
   labElectronica: {
-    keywords: ['laboratorio de electrónica', 'laboratorio de electronica', 'lab electrónica', 'lab electronica', 'electromecánica', 'electromecanica', 'lab electromecánica'],
+    keywords: ['laboratorio de electrónica', 'laboratorio de electronica', 'lab electrónica', 'lab electronica', 'laboratorio de electromecánica', 'laboratorio de electromecanica', 'lab electromecánica'],
     response: 'El Laboratorio de Electrónica y Electromecánica está en la zona noreste del campus. Prácticas de circuitos, electrónica, sistemas eléctricos y mecánicos. Acceso con docente.',
     category: 'ubicacion',
     building: 'lab-electronica'
@@ -248,14 +250,14 @@ const KNOWLEDGE_BASE = {
   },
 
   canchas: {
-    keywords: ['canchas', 'deportes', 'cancha', 'futbol', 'fútbol', 'basquetbol', 'básquetbol', 'deporte', 'actividades deportivas', 'gimnasio', 'pesas', 'campo'],
+    keywords: ['canchas', 'cancha', 'futbol', 'fútbol', 'basquetbol', 'básquetbol', 'gimnasio', 'pesas', 'campo'],
     response: 'El campus tiene canchas, gimnasio-auditorio (construido 2022), campo de pasto sintético y sala de pesas equipada. Ha sido sede de pre-nacionales deportivos del TecNM.',
     category: 'ubicacion',
     building: 'canchas'
   },
 
   estacionamiento: {
-    keywords: ['estacionamiento', 'parking', 'estacionar', 'carro', 'coche', 'auto', 'vehículo', 'vehiculo'],
+    keywords: ['estacionamiento', 'parking', 'estacionar', 'estaciono', 'estacionarme', 'carro', 'coche', 'auto', 'vehículo', 'vehiculo'],
     response: 'El estacionamiento está en la zona sureste del campus. Respeta cajones señalizados y áreas reservadas para docentes y personas con discapacidad.',
     category: 'ubicacion',
     building: 'estacionamiento'
@@ -294,8 +296,8 @@ const KNOWLEDGE_BASE = {
   },
 
   calendario: {
-    keywords: ['calendario', 'calendario académico', 'calendario academico', 'periodo', 'semestre', 'cuando inician clases', 'inicio de clases'],
-    response: 'El calendario académico vigente es ENE-JUN 2026. El próximo periodo es AGO-DIC 2026 con inicio de clases el 17 de agosto. Consulta el calendario completo en delicias.tecnm.mx',
+    keywords: ['calendario', 'calendario académico', 'calendario academico', 'periodo', 'semestre', 'cuando inician clases', 'inicio de clases', 'empiezan las clases', 'terminan las clases', 'fin de clases', 'fin de semestre', 'vacaciones', 'días festivos', 'dias festivos', 'días de descanso', 'dias de descanso', 'no hay clases', 'segunda oportunidad'],
+    response: 'Periodo actual: AGO-DIC 2026. Escolarizado: clases del 17 de agosto al 4 de diciembre; exámenes de segunda oportunidad del 7 al 11 de diciembre. Mixto: 1er trimestre del 8 de agosto al 10 de octubre y 2do del 17 de octubre al 19 de diciembre. Días de descanso: 16 de septiembre, 2 y 16 de noviembre. Vacaciones de invierno: del 21 de diciembre de 2026 al 5 de enero de 2027. Calendario completo en delicias.tecnm.mx',
     category: 'info'
   },
 
@@ -499,7 +501,7 @@ const KNOWLEDGE_BASE = {
   },
 
   extraescolares: {
-    keywords: ['actividades extra', 'extraescolares', 'clubes', 'talleres', 'actividades culturales', 'deporte', 'selección deportiva', 'torneos', 'actividades complementarias'],
+    keywords: ['actividades extra', 'extraescolares', 'clubes', 'talleres', 'actividades culturales', 'deporte', 'deportes', 'actividades deportivas', 'selección deportiva', 'torneos', 'actividades complementarias'],
     response: 'El Tec ofrece actividades deportivas (futbol, basquetbol, voleibol, atletismo), talleres culturales y actividades complementarias (valen 5 créditos). Cuenta con gimnasio-auditorio, campo sintético y sala de pesas. El campus ha sido sede de pre-nacionales del TecNM.',
     category: 'info'
   },
@@ -529,7 +531,7 @@ const KNOWLEDGE_BASE = {
   },
 
   horarioServiciosEscolares: {
-    keywords: ['horario servicios escolares', 'a qué hora abren servicios escolares'],
+    keywords: ['horario servicios escolares', 'horario de servicios escolares', 'a qué hora abren servicios escolares'],
     response: 'Servicios Escolares atiende de Lunes a Viernes de 9:00 a 15:00 hrs. Llega temprano en periodo de inscripciones.',
     category: 'horario'
   },

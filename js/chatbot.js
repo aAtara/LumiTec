@@ -33,6 +33,8 @@ const Chatbot = (() => {
     'y', 'o', 'e', 'u', 'ni', 'pero', 'si', 'no',
     'mas', 'muy', 'tan', 'ya', 'tambien', 'puede', 'puedo',
     'ser', 'hago', 'hacer', 'tengo', 'quiero', 'necesito',
+    // Todo es sobre el Tec: estas palabras no distinguen una respuesta de otra
+    'tec', 'tecnologico', 'instituto', 'campus',
   ]);
 
   function isSignificantWord(word) {
@@ -40,47 +42,56 @@ const Chatbot = (() => {
   }
 
   // --- Motor de búsqueda local ---
+  // Puntaje de cada entrada = la mejor frase clave que aparece en la pregunta
+  // + la mejor coincidencia de cada palabra del usuario. Cada palabra cuenta
+  // una sola vez, para que las entradas con muchas variantes (con y sin acento)
+  // no acumulen puntos de más.
   function findBestMatch(userInput) {
     const normalized = normalizeText(userInput);
-    const words = normalized.split(/\s+/);
-    const significantWords = words.filter(isSignificantWord);
+    const significantWords = normalized.split(/\s+/).filter(isSignificantWord);
+    const paddedInput = ` ${normalized} `;
     let bestMatch = null;
     let bestScore = 0;
 
-    for (const [key, entry] of Object.entries(KNOWLEDGE_BASE)) {
-      let score = 0;
+    for (const entry of Object.values(KNOWLEDGE_BASE)) {
+      let phraseScore = 0;
+      const wordScores = new Map();
 
       for (const keyword of entry.keywords) {
         const normalizedKeyword = normalizeText(keyword);
+        // Las claves cortas ("sii", "isc") solo cuentan como palabra completa
+        const appearsInInput = normalizedKeyword.length > 3
+          ? normalized.includes(normalizedKeyword)
+          : paddedInput.includes(` ${normalizedKeyword} `);
 
         if (normalized === normalizedKeyword) {
-          score += 10;
-          continue;
-        }
-
-        if (normalized.includes(normalizedKeyword) && normalizedKeyword.length > 3) {
-          score += 5 + normalizedKeyword.length;
-          continue;
-        }
-
-        if (normalizedKeyword.includes(normalized) && normalized.length > 3) {
-          score += 5;
-          continue;
+          phraseScore = Math.max(phraseScore, 10 + normalizedKeyword.length);
+        } else if (appearsInInput) {
+          phraseScore = Math.max(phraseScore, 5 + normalizedKeyword.length);
+        } else if (normalizedKeyword.includes(normalized) && normalized.length > 3) {
+          phraseScore = Math.max(phraseScore, 5);
         }
 
         const keywordWords = normalizedKeyword.split(/\s+/).filter(isSignificantWord);
         for (const kw of keywordWords) {
           for (const w of significantWords) {
+            let wordScore = 0;
             if (w === kw) {
-              score += 4;
-            } else if (w.length > 3 && kw.includes(w)) {
-              score += 2;
-            } else if (kw.length > 3 && w.includes(kw)) {
-              score += 2;
+              wordScore = 4;
+            } else if ((w.length > 3 && kw.includes(w)) || (kw.length > 3 && w.includes(kw))) {
+              wordScore = 2;
+            }
+            if (wordScore > (wordScores.get(w) || 0)) {
+              wordScores.set(w, wordScore);
             }
           }
         }
       }
+
+      const wordsTotal = [...wordScores.values()].reduce((sum, s) => sum + s, 0);
+      // Sin una frase clave completa hacen falta al menos dos palabras en común:
+      // una sola palabra suelta ("clases", "hora") no basta para elegir respuesta
+      const score = (phraseScore > 0 || wordsTotal >= 6) ? phraseScore + wordsTotal : 0;
 
       if (score > bestScore) {
         bestScore = score;
@@ -88,7 +99,7 @@ const Chatbot = (() => {
       }
     }
 
-    return bestScore >= 3 ? bestMatch : null;
+    return bestMatch;
   }
 
   // --- Motor de IA (Google Gemini vía proxy) ---
